@@ -1,4 +1,4 @@
-# Django Dating App !!!!!!!!!!!
+# Django Dating App
 
 A dating app for those that live in the anime world.
 
