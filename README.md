@@ -1,5 +1,5 @@
-# Title Page
-Description of the project
+# Django Dating App
+A dating app for those that live in the anime world.
 
 ## Table of contents
 * [General info](#general-info)
@@ -7,13 +7,13 @@ Description of the project
 * [Setup](#setup)
 
 ## General info
-This project is simple Lorem ipsum dolor generator.
+This project was created by Kimberley Salter and Antony Long. 
 	
 ## Technologies
 Project is created with:
-* Lorem version: 12.3
-* Ipsum version: 2.33
-* Ament library version: 999
+* React
+* Python
+* Django
 	
 ## Setup
 To run this project, install it locally using npm:
