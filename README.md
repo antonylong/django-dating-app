@@ -16,15 +16,18 @@ Project is created with:
 * Django
 	
 ## Setup
-To run this project, install it locally using npm:
+To run this project, clone it and install it using yarn.
 
-$ cd ../lorem
-$ npm install
-$ npm start
+$ git clone https://github.com/antonylong/django-dating-app.git
+$ yarn
+$ yarn start
 
 ## Features
-* One feature
-* Second Feature
+* Filtering
+* Searching
+* Chat
+* Swipe left/right
+* Favourite
 
 ### To Do:
 * something
