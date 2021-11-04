@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Persona(models.model):
+class Persona(models.Model):
     name = models.CharField(max_length=50)
     age = models.CharField(max_length=50)
     height = models.CharField(max_length=50)
