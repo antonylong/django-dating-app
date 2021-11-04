@@ -25,9 +25,11 @@ Project is created with:
 
 To run this project, clone it and install it using yarn.
 
+```
 $ git clone https://github.com/antonylong/django-dating-app.git
 $ yarn
 $ yarn start
+```
 
 ## Features
 
@@ -48,11 +50,10 @@ $ yarn start
 
 ### To Do:
 
-- something
-- something
+- build the backend
+- build the frontend
+- add extra features
 
 ## Sources
 
-This was inspired by Bob the cat.
-
-testing.
+This was inspired by our love of anime.
