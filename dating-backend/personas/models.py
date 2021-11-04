@@ -12,29 +12,30 @@ class Persona(models.Model):
     NONBINARY = 'NON'
     OTHER = 'OTH'
     GENDER_CHOICE = [
-        ('male', 'Male'),
-        ('female', 'Female'),
-        ('nonB', 'Non-Binary'),
-        ('other', 'Other'),
+        ('MALE', 'Male'),
+        ('FEMALE', 'Female'),
+        ('NONBINARY', 'Non-Binary'),
+        ('OTHER', 'Other'),
     ]
     gender = models.CharField(
-        max_length=3, choices=GENDER_CHOICE, default=OTHER)
+        max_length=9, choices=GENDER_CHOICE, default=OTHER)
 
     STRAIGHT = 'STR'
     GAY = 'GAY'
     BISEXUAL = 'BI'
     ASEXUAL = 'ASX'
     PANSEXUAL = 'PAN'
+    OTHER = 'OTH'
     SEXUALITY_CHOICE = [
-        ('straight', 'Straight'),
-        ('gay', 'Gay'),
-        ('bi', 'Bisexual'),
-        ('asexual', 'Asexual'),
-        ('pan', 'Pansexual'),
-        ('other', 'Other'),
+        ('STRAIGHT', 'Straight'),
+        ('GAY', 'Gay'),
+        ('BISEXUAL', 'Bisexual'),
+        ('ASEXUAL', 'Asexual'),
+        ('PANSEXUAL', 'Pansexual'),
+        ('OTHER', 'Other'),
     ]
     sexuality = models.CharField(
-        max_length=3, choices=SEXUALITY_CHOICE, default=OTHER)
+        max_length=9, choices=SEXUALITY_CHOICE, default=OTHER)
 
     occupation = models.CharField(max_length=50)
     bio = models.CharField(max_length=500)
