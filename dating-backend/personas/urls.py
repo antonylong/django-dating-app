@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import index
+from .views import PersonaListView, index
 
 urlpatterns = [
-    path("", index),
+    path("", PersonaListView.as_view()),
+    path("view/", index),
 ]
