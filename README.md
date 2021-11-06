@@ -7,6 +7,10 @@ A dating app for those that live in the anime world.
 - [General info](#general-info)
 - [Technologies](#technologies)
 - [Setup](#setup)
+- [Features](#features)
+- [Idea & Wireframe](#idea-and-wireframe)
+- [To Do](#to-do)
+- [Sources](#sources)
 
 ## General info
 
@@ -19,7 +23,7 @@ Project is created with:
 - React
 - Python
 - Django
-- wireframe made on balsamiq
+- Balsamiq (for wireframing)
 
 ## Setup
 
@@ -48,7 +52,7 @@ $ yarn start
 
 ![Screenshot 2021-11-04 at 18 47 23](https://user-images.githubusercontent.com/85836801/140401252-0b0767b5-d728-455f-a7cb-d708c12faada.png)
 
-### To Do:
+## To Do
 
 - build the backend
 - build the frontend
