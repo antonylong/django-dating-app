@@ -24,6 +24,8 @@ Project is created with:
 - Python
 - Django
 - Balsamiq (for wireframing)
+- Webpack
+- Babel
 
 ## Setup
 
