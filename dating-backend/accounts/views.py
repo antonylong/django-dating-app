@@ -1,23 +1,54 @@
-from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
-from rest_framework import response, status
+import django
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 from .forms import CreateRegisterForm
 
 # Create your views here.
 
 
-def register(request):
-    form = CreateRegisterForm()
+def registerPage(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+        form = CreateRegisterForm()
+        if request.method == 'POST':
+            form = CreateRegisterForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('username')
+                messages.success(request, 'account has been created' + user)
+                
+                return redirect('login')
 
-    if request.method == 'POST':
-        form = CreateRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-
-    context = {'form': form}
-    return render(request, 'accounts/register.html', context)
+        context = {'form': form}
+        return render(request, 'accounts/register.html', context)
 
 
-def login(request):
+def loginPage(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect('register') #NEED TO CHANGE WHEN HOME IS CREATED
+            else:
+                messages.info(request, 'username or password is incorrect')
+
+        context = {}
+        return render(request, 'accounts/login.html', context)
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
+
+def home(request):
     context = {}
-    return response.Response(context.data, status=status.HTTP_201_CREATED)
+    return render(request, 'accounts/home.html', context)
