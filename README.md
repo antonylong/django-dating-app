@@ -8,7 +8,7 @@ A dating app for those that live in the anime world.
 - [Technologies](#technologies)
 - [Setup](#setup)
 - [Features](#features)
-- [Idea & Wireframe](#idea-and-wireframe)
+- [Idea & Wireframe](#idea&wireframe)
 - [To Do](#to-do)
 - [Sources](#sources)
 

@@ -7,18 +7,23 @@ const Navbar = () => {
       <div className="container-fluid">
         <span className="navbar-brand mb-0 h1">Ani-mate</span>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav">
+          <div className="nav navbar-nav">
             <Link to="/" className="nav-link">
               Home
             </Link>
-            <Link to="/register" className="nav-link">
+            <Link to="/search" className="nav-link">
+              Profiles
+            </Link>
+            <Link to="/myprofile" className="nav-link">
+              My Profile
+            </Link>
+          </div>
+          <div className="nav navbar-nav navbar-right">
+            <Link to="/register" className="nav-link navbar-right">
               Register
             </Link>
             <Link to="/login" className="nav-link">
               Login
-            </Link>
-            <Link to="/myprofile" className="nav-link">
-              My Profile
             </Link>
           </div>
         </div>
