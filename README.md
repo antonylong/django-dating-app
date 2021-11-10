@@ -62,4 +62,4 @@ $ yarn start
 
 ## Sources
 
-This was inspired by our love of anime.
+This was inspired by our love of anime. check
