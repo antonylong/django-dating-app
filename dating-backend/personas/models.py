@@ -1,9 +1,13 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
+
 
 
 class Persona(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE, null=True
+    )
     name = models.CharField(max_length=100)
     age = models.CharField(max_length=3)
     height = models.CharField(max_length=50)

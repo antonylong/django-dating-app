@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "../../api/callerFunctions";
+import axios from "axios";
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -8,8 +8,8 @@ const Registration = () => {
     formData: {
       username: "",
       email: "",
-      password1: "",
-      password2: ""
+      password: "",
+      password_confirmation: ""
     }
   });
 
@@ -26,20 +26,19 @@ const Registration = () => {
     e.preventDefault();
 
     try {
-      const res = await registerUser(state.formData);
-      console.log(res);
-      if (res.status === 201) {
-        navigate("/login");
-        const currentId = res.data.id;
-        console.log(currentId, "this");
-      }
+      await axios.post(
+        "http://localhost:8000/accounts/register/",
+        state.formData
+      );
+      console.log(state);
+      navigate("/login");
     } catch (err) {
       console.error("Error registering user", err);
     }
   };
 
   return (
-    <div>
+    <form>
       <h1>Please Register</h1>
 
       <label>Username:</label>
@@ -61,21 +60,21 @@ const Registration = () => {
       <label>Password:</label>
       <input
         type="password"
-        name="password1"
-        value={state.formData.password1}
+        name="password"
+        value={state.formData.password}
         onChange={handleChange}
       ></input>
       <br />
       <label>Confirm Password:</label>
       <input
         type="password"
-        name="password2"
-        value={state.formData.password2}
+        name="password_confirmation"
+        value={state.formData.password_confirmation}
         onChange={handleChange}
       ></input>
       <br />
       <button onClick={handleSubmit}>Register</button>
-    </div>
+    </form>
   );
 };
 
