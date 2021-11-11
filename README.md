@@ -8,7 +8,7 @@ A dating app for those that live in the anime world.
 - [Technologies](#technologies)
 - [Setup](#setup)
 - [Features](#features)
-- [Idea & Wireframe](#idea&wireframe)
+- [Idea & Wireframe](#idea-&-wireframe)
 - [To Do](#to-do)
 - [Sources](#sources)
 
@@ -26,6 +26,7 @@ Project is created with:
 - Balsamiq (for wireframing)
 - Webpack
 - Babel
+- Bootstrap (for styling)
 
 ## Setup
 
@@ -34,6 +35,10 @@ To run this project, clone it and install it using yarn.
 ```
 $ git clone https://github.com/antonylong/django-dating-app.git
 $ yarn
+$ cd dating-backend
+$ python -m pip install django-cors-headers
+$ cd ..
+$ cd client
 $ yarn start
 ```
 
@@ -62,4 +67,4 @@ $ yarn start
 
 ## Sources
 
-This was inspired by our love of anime. check double
+This was inspired by our love of anime.
