@@ -21,3 +21,7 @@ const baseUrl = "http://localhost:8000/personas/";
 export const getManyProfiles = () => {
   return axios.get(`${baseUrl}`);
 };
+
+export const getSingleProfile = (id) => {
+  return axios.get(`${baseUrl}/${id}`);
+};

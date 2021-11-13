@@ -1,21 +1,31 @@
-import React from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { getSingleProfile } from "../../api/profileApi";
 
 const UserProfile = () => {
-  React.useEffect(() => {
-    async function getInformation() {
-      console.log("before axios request");
-      const response = await axios.get("www.localhost:8000/personas/");
-      console.log("this is response", response);
+  const { id } = useParams();
+  const [profile, setProfile] = useState([]);
+
+  const getTheProfile = async () => {
+    try {
+      const res = await getSingleProfile(id);
+      setProfile(res.data);
+    } catch (err) {
+      console.error(`Error occurred getting profile ${id}`, err);
     }
-    getInformation();
+  };
+
+  useEffect(() => {
+    getTheProfile();
   }, []);
+
+  console.log("this is profile", profile);
 
   return (
     <>
       <div>Profile Picture</div>
       <div>Profile Bio Data (editable)</div>
-      <button>Eddit</button>
+      <button>Edit</button>
       <div>Chat/Comment feature</div>
       <button>Delete Profile</button>
     </>

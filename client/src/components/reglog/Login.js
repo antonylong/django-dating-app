@@ -7,14 +7,14 @@ const Login = () => {
   const [state, setState] = useState({
     formData: {
       username: "",
-      password: ""
-    }
+      password: "",
+    },
   });
 
   const handleChange = (e) => {
     const formData = {
       ...state.formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     };
     console.log("this is a log of handleChange", formData);
     setState({ formData });
@@ -24,7 +24,7 @@ const Login = () => {
     window.localStorage.setItem("token", token);
     console.log("TOKEN", token);
   };
-
+  // need to set the id here so that we can pull the id from local storage.
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
