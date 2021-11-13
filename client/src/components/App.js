@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./common/Home";
 import Navbar from "./common/Navbar";
+import EditProfile from "./personas/EditProfile";
+import NewProfile from "./personas/NewProfile";
 import ProfileList from "./personas/ProfileList";
 import UserProfile from "./personas/UserProfile";
 import Login from "./reglog/Login";
@@ -18,6 +20,8 @@ function App() {
         <Route path="/search" element={<ProfileList />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/newprofile" element={<NewProfile />} />
+        <Route path="/editprofile" element={<EditProfile />} />
       </Routes>
     </BrowserRouter>
   );
