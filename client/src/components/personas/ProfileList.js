@@ -5,10 +5,8 @@ const ProfileList = () => {
   const [profiles, setProfiles] = useState({ profile: [] });
 
   const getProfilesFromApi = async () => {
-    console.log("is this happening?");
     try {
       const response = await getManyProfiles();
-      console.log("this is the response", response);
       setProfiles({ profile: response.data });
       console.log("this is response.data", response.data);
     } catch (error) {
@@ -20,6 +18,8 @@ const ProfileList = () => {
     getProfilesFromApi();
   }, []);
 
+  console.log("this is profiles", profiles);
+
   return (
     <>
       <div>A search/filter bar</div>
@@ -27,8 +27,8 @@ const ProfileList = () => {
         {profiles.profile.map((profile) => (
           <>
             <h1 key={profile.id}>{profile.name}</h1>
-            <h2>{profile.age}</h2>
-            <div>{profile.profile_pic}</div>
+            <h2 key={profile.id}>{profile.age}</h2>
+            <div key={profile.id}>{profile.profile_pic}</div>
             <button>See more</button>
           </>
         ))}

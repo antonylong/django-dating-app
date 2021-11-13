@@ -1,5 +1,5 @@
-from rest_framework.views import APIView 
-from rest_framework.response import Response 
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.exceptions import PermissionDenied
 from datetime import datetime, timedelta
@@ -13,20 +13,21 @@ from .serializer import UserSerializer
 
 User = get_user_model()
 
+
 class RegisterPage(APIView):
 
     def post(self, request):
         user_to_create = UserSerializer(data=request.data)
         if user_to_create.is_valid():
             user_to_create.save()
-            return Response({ 'message': 'Registration Successful'}, status=status.HTTP_202_ACCEPTED)
+            return Response({'message': 'Registration Successful'}, status=status.HTTP_202_ACCEPTED)
         return Response(user_to_create.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 
 class LoginPage(APIView):
 
     def post(self, request):
-        
+
         username = request.data.get('username')
         password = request.data.get('password')
 
@@ -43,4 +44,5 @@ class LoginPage(APIView):
             settings.SECRET_KEY,
             algorithm='HS256'
         )
-        return Response({ 'token': token, 'message': f"Welcome back {user_to_login.username}" })
+        print(token)
+        return Response({'token': token, 'message': f"Welcome back {user_to_login.username}"})

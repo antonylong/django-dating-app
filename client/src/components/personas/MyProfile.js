@@ -3,15 +3,13 @@ import { useParams } from "react-router";
 import { getPayload } from "../../api/authToken";
 import { getSingleProfile } from "../../api/profileApi";
 
-const UserProfile = () => {
+const MyProfile = () => {
   const { id } = useParams();
   const [profile, setProfile] = useState({ profile: null });
 
   const getTheProfile = async () => {
-    console.log("is this happening?");
     try {
       const response = await getSingleProfile(id);
-      console.log("this is the response", response);
       setProfile({ profile: response.data });
       console.log("this is response.data", response.data);
     } catch (error) {
@@ -25,13 +23,21 @@ const UserProfile = () => {
 
   console.log("this is profile", profile);
 
-  const isOwner = getPayload().sub === profile.profile.id;
+  console.log("this is getPayload", getPayload().sub);
+
+  const isOwner = getPayload().sub === profile.profile.user;
   console.log("isOwner is", isOwner);
 
   return (
     <>
-      <div>Profile Picture</div>
-      <div>Profile Bio Data (editable)</div>
+      <div>
+        <figure>
+          <img src={profile.profile.profile_pic} alt="the user profile" />
+        </figure>
+      </div>
+      <h1>{profile.profile.name}</h1>
+      <h2>{profile.profile.age} years old</h2>
+      <h3>{profile.profile.city}</h3>
       {isOwner && <button>Edit</button>}
       <div>Chat/Comment feature</div>
       <button>Delete Profile</button>
@@ -39,4 +45,4 @@ const UserProfile = () => {
   );
 };
 
-export default UserProfile;
+export default MyProfile;

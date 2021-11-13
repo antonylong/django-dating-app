@@ -5,7 +5,7 @@ import { isLoggedIn } from "../api/authToken";
 import Home from "./common/Home";
 import Navbar from "./common/Navbar";
 import ProfileList from "./personas/ProfileList";
-import UserProfile from "./personas/UserProfile";
+import MyProfile from "./personas/MyProfile";
 import Login from "./reglog/Login";
 import Registration from "./reglog/Registration";
 // import SecureRoute from "./common/SecureRoute";
@@ -24,7 +24,7 @@ function App() {
       <Navbar isAuthenticated={isAuthenticated} />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/myprofile/:id" element={<UserProfile />} />
+        <Route path="/myprofile/:id" element={<MyProfile />} />
         <Route path="/search" element={<ProfileList />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Login />} />

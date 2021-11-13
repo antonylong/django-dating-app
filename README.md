@@ -34,11 +34,14 @@ To run this project, clone it and install it using yarn.
 
 ```
 $ git clone https://github.com/antonylong/django-dating-app.git
-$ yarn
+$ cd django-dating-app
 $ cd dating-backend
+$ pip install
 $ python -m pip install django-cors-headers
+$ python manage.py runserver
 $ cd ..
 $ cd client
+$ yarn
 $ yarn start
 ```
 
@@ -53,6 +56,7 @@ $ yarn start
 ## Idea & Wireframe
 
 - talk about our initial idea
+- discussed the idea of a dating app
 - created a wireframe with potential colour schemes and app name
 
 ![Screenshot 2021-11-04 at 18 37 18](https://user-images.githubusercontent.com/85836801/140401085-d786827e-93b1-4596-a266-739a6c95a2cf.png)
@@ -64,6 +68,10 @@ $ yarn start
 - build the backend
 - build the frontend
 - add extra features
+
+## Problems
+
+- Antony had an issue with JWT, which took a long time. Was having an error "JWT: 'module' object has no attribute 'encode'". This took quite a while to resolve. Required for virtual environments on local machine to be deleted and reinstall the project.
 
 ## Sources
 
