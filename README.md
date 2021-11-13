@@ -26,6 +26,8 @@ Project is created with:
 - Balsamiq (for wireframing)
 - Webpack
 - Babel
+- SASS
+- JWT
 - Bootstrap (for styling)
 
 ## Setup
