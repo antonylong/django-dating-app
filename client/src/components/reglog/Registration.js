@@ -31,7 +31,7 @@ const Registration = () => {
         state.formData
       );
       console.log(state);
-      navigate("/login");
+      navigate("/newprofile");
     } catch (err) {
       console.error("Error registering user", err);
     }
