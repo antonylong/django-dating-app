@@ -8,7 +8,7 @@ import ProfileList from "./personas/ProfileList";
 import UserProfile from "./personas/UserProfile";
 import Login from "./reglog/Login";
 import Registration from "./reglog/Registration";
-import SecureRoute from "./common/SecureRoute";
+// import SecureRoute from "./common/SecureRoute";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -24,7 +24,7 @@ function App() {
       <Navbar isAuthenticated={isAuthenticated} />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <SecureRoute path="/myprofile/:id" element={<UserProfile />} />
+        <Route path="/myprofile/:id" element={<UserProfile />} />
         <Route path="/search" element={<ProfileList />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Login />} />

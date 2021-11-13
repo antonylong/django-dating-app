@@ -1,13 +1,13 @@
 import React from "react";
-import { Route, Redirect } from "react-router";
+import { Route, Navigate } from "react-router-dom";
 import { isLoggedIn } from "../../api/authToken";
 
-const SecureRoute = ({ component: Component, path, exact = false }) => {
+const SecureRoute = ({ element: Element, path, exact = false }) => {
   if (isLoggedIn()) {
-    return <Route component={Component} path={path} exact={exact}></Route>;
+    return <Route element={Element} path={path} exact={exact} />;
   }
 
-  return <Redirect to="/login" />;
+  return <Navigate to="/login" />;
 };
 
 export default SecureRoute;

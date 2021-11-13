@@ -61,7 +61,7 @@ const Login = () => {
         onChange={handleChange}
       ></input>
       <br />
-      <button onClick={handleSubmit}>Register</button>
+      <button onClick={handleSubmit}>Login</button>
     </form>
   );
 };
