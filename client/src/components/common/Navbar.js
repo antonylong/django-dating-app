@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 // import { getSingleProfile } from "../../api/profileApi";
 // import { getPayload } from "../../api/authToken";
+import logo from "../../styles/assets/whitelogo.png";
 
 const Navbar = () => {
   const { id } = useParams();
@@ -29,11 +30,31 @@ const Navbar = () => {
   // console.log("isOwner is", isOwner);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
-        <span className="navbar-brand mb-0 h1">Ani-mate</span>
+        <span className="navbar-brand mb-0 h1">
+          <img
+            src={logo}
+            alt=""
+            width="40"
+            height="35"
+            className="d-inline-block align-text-top"
+          />
+          Ani-mate
+        </span>
+        <button
+          className="navbar-toggler navbar-dark"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon navbar-dark"></span>
+        </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="nav navbar-nav">
+          <div className="navbar-nav ms-auto">
             <Link to="/" className="nav-link">
               Home
             </Link>
@@ -47,14 +68,13 @@ const Navbar = () => {
             >
               My Profile
             </Link>
-          </div>
-          <div className="nav navbar-nav navbar-right">
-            <Link to="/register" className="nav-link navbar-right">
+            <Link to="/register" className="nav-link">
               Register
             </Link>
             <Link to="/login" className="nav-link">
               Login
             </Link>
+            <button className="nav-link">Logout</button>
           </div>
         </div>
       </div>

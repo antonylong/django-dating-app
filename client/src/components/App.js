@@ -4,6 +4,8 @@ import { isLoggedIn } from "../api/authToken";
 
 import Home from "./common/Home";
 import Navbar from "./common/Navbar";
+import EditProfile from "./personas/EditProfile";
+import NewProfile from "./personas/NewProfile";
 import ProfileList from "./personas/ProfileList";
 import MyProfile from "./personas/MyProfile";
 import Login from "./reglog/Login";
@@ -28,6 +30,8 @@ function App() {
         <Route path="/search" element={<ProfileList />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/newprofile" element={<NewProfile />} />
+        <Route path="/editprofile" element={<EditProfile />} />
       </Routes>
     </BrowserRouter>
   );
