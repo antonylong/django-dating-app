@@ -7,14 +7,14 @@ const Login = () => {
   const [state, setState] = useState({
     formData: {
       username: "",
-      password: "",
-    },
+      password: ""
+    }
   });
 
   const handleChange = (e) => {
     const formData = {
       ...state.formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     };
     console.log("this is a log of handleChange", formData);
     setState({ formData });
@@ -35,7 +35,7 @@ const Login = () => {
       console.log("data", data);
       console.log(state.formData);
       setTokenToLocalStorage(data.token);
-      navigate("/myprofile");
+      navigate("/search");
     } catch (err) {
       console.error("Error logging in user", err);
     }
