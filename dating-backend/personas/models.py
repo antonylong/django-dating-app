@@ -1,6 +1,9 @@
 from django.db import models
 from django.conf import settings
+from django.utils.translation import gettext_lazy as _
 
+#def upload_to(instance, filename):
+#    return 'posts/{filename}'.format(filename=filename)
 
 
 class Persona(models.Model):
@@ -45,7 +48,8 @@ class Persona(models.Model):
 
     occupation = models.CharField(max_length=50)
     bio = models.CharField(max_length=500)
-    profile_pic = models.CharField(max_length=200)
+    #profile_pic = models.ImageField(_("Image"), upload_to=upload_to, default='posts/default.png', null=True, blank=True)
+    profile_pic = models.CharField(max_length=500, blank=True)
 
     def __str__(self):
         return f"{self.name} ({self.id})"

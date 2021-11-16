@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from rest_framework import views, response, status, exceptions
+from rest_framework.parsers import MultiPartParser, FormParser
 
 # add serilaizer when done
 from .serializers import PersonaSerializer
@@ -14,6 +15,8 @@ def index(request):
 # check serializer name matches
 
 class PersonaListView(views.APIView):
+    #parser_classes = [MultiPartParser, FormParser]
+
     def get(self, _request):
         personas = Persona.objects.all()
         serialized_persona = PersonaSerializer(personas, many=True)
@@ -28,6 +31,8 @@ class PersonaListView(views.APIView):
         return response.Response(persona_to_add.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class PersonaDetailView(views.APIView):
+    #parser_classes = [MultiPartParser, FormParser]
+
     def get_persona_by_id(self, id):
         try:
             return Persona.objects.get(id=id)

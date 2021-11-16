@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router";
+//import { useParams } from "react-router";
 // import { getSingleProfile } from "../../api/profileApi";
 // import { getPayload } from "../../api/authToken";
 import logo from "../../styles/assets/whitelogo.png";
 
 const Navbar = () => {
-  const { id } = useParams();
+  // const { id } = useParams();
 
   // const [profile, setProfile] = useState({ profile: null });
 
