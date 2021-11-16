@@ -2,31 +2,36 @@ import React from "react";
 import { Link } from "react-router-dom";
 //import { useParams } from "react-router";
 // import { getSingleProfile } from "../../api/profileApi";
+import { useParams } from "react-router";
 // import { getPayload } from "../../api/authToken";
 import logo from "../../styles/assets/whitelogo.png";
+// import { getSingleUser } from "../../api/userApi";
 
 const Navbar = () => {
   // const { id } = useParams();
+  const { id } = useParams();
+  // const [account, setAccount] = useState({ account: null });
 
-  // const [profile, setProfile] = useState({ profile: null });
-
-  // const getTheProfile = async () => {
+  // const getTheUser = async () => {
   //   try {
-  //     const response = await getSingleProfile(id);
-  //     setProfile({ profile: response.data });
+  //     const response = await getSingleUser(id);
+  //     setAccount({ account: response.data });
   //     console.log("this is response.data", response.data);
   //   } catch (error) {
-  //     console.error("An error occured getting all profiles", error);
+  //     console.error("An error occured getting single user", error);
   //   }
   // };
 
   // useEffect(() => {
-  //   getTheProfile();
+  //   getTheUser();
   // }, []);
 
-  // console.log("this is profile", profile);
+  // console.log("this is user", user);
+  // console.log("this is account", account);
 
-  // const isOwner = getPayload().sub === profile.profile.id;
+  // console.log("this is getPayload", getPayload().sub);
+
+  // const isOwner = getPayload().sub === account.id;
   // console.log("isOwner is", isOwner);
 
   return (
@@ -61,11 +66,7 @@ const Navbar = () => {
             <Link to="/search" className="nav-link">
               Profiles
             </Link>
-            <Link
-              to="/myprofile'"
-              // {`/myprofile/${id}`}
-              className="nav-link"
-            >
+            <Link to={`/myprofile/${id}`} className="nav-link">
               My Profile
             </Link>
             <Link to="/register" className="nav-link">

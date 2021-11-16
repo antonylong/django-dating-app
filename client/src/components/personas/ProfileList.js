@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { getManyProfiles } from "../../api/profileApi";
 import Modal from "./Modal";
+import { useNavigate } from "react-router";
 
 const ProfileList = () => {
   const [profiles, setProfiles] = useState({ profile: [] });
+
+  const navigate = useNavigate();
 
   const getProfilesFromApi = async () => {
     try {
@@ -31,9 +34,11 @@ const ProfileList = () => {
         {profiles.profile.map((profile) => (
           <>
             <h1 key={profile.id}>{profile.name}</h1>
-            <h2 key={profile.id}>{profile.age}</h2>
-            <div key={profile.id}>{profile.profile_pic}</div>
-            <button>See more</button>
+            <h2>{profile.age}</h2>
+            <div>{profile.profile_pic}</div>
+            <button onClick={() => navigate(`/personas/${profile.id}/`)}>
+              See More
+            </button>
           </>
         ))}
       </section>

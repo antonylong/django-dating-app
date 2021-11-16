@@ -186,7 +186,7 @@ const NewProfile = () => {
         <label className="form-label">Occupation:</label>
         <input
           className="form-control"
-          placeholder="21"
+          placeholder="Chef"
           name="occupation"
           value={formData.occupation}
           onChange={handleChange}
