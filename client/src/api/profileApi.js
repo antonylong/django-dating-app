@@ -11,26 +11,26 @@ export const getSingleProfile = (id) => {
   return axios.get(`${baseUrl}/${id}/`);
 };
 
-export const createProfileConfig = (id, formData) => {
+export const createProfileConfig = (user, formData) => {
   const requestConfig = {
     headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
   };
 
-  return axios.post(`${baseUrl}/myprofile/${id}`, formData, requestConfig);
+  return axios.post(`${baseUrl}/myprofile/${user}`, formData, requestConfig);
 };
 
-export const editProfileConfig = (id, formData) => {
+export const editProfileConfig = (user, formData) => {
   const requestConfig = {
     headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
   };
 
-  return axios.put(`${baseUrl}/myprofile/${id}`, formData, requestConfig);
+  return axios.put(`${baseUrl}/myprofile/${user}`, formData, requestConfig);
 };
 
-export const deleteProfileConfig = (id) => {
+export const deleteProfileConfig = (user) => {
   const requestConfig = {
     headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
   };
 
-  return axios.delete(`${baseUrl}/myprofile/${id}`, requestConfig);
+  return axios.delete(`${baseUrl}/myprofile/${user}`, requestConfig);
 };
