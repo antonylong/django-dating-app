@@ -5,39 +5,38 @@ import { getSingleProfile } from "../../api/profileApi";
 
 const MyProfile = () => {
   const { id } = useParams();
-  const [profile, setProfile] = useState({ profile: null });
+  const [persona, setPersona] = useState({ profile: "" });
 
-  const getTheProfile = async () => {
+  const getOneProfile = async () => {
     try {
-      const response = await getSingleProfile(id);
-      setProfile({ profile: response.data });
-      console.log("this is response.data", response.data);
-    } catch (error) {
-      console.error("An error occured getting all profiles", error);
+      const res = await getSingleProfile(id);
+      setPersona({ profile: res.data });
+    } catch (err) {
+      console.error(`An error occurred fetching profile ${id}`, err);
     }
   };
 
   useEffect(() => {
-    getTheProfile();
+    console.log("are we having a useEffet");
+    getOneProfile();
   }, []);
-
-  console.log("this is profile", profile);
 
   console.log("this is getPayload", getPayload().sub);
 
-  const isOwner = getPayload().sub === profile.profile.user;
+  // this is where we can see the connection between the user (getPayload.sub) and the profile (profile.user = userID)
+  const isOwner = getPayload().sub === persona.profile.user;
   console.log("isOwner is", isOwner);
 
   return (
     <>
       <div>
         <figure>
-          <img src={profile.profile.profile_pic} alt="the user profile" />
+          <img src={persona.profile.profile_pic} alt="the user profile" />
         </figure>
       </div>
-      <h1>{profile.profile.name}</h1>
-      <h2>{profile.profile.age} years old</h2>
-      <h3>{profile.profile.city}</h3>
+      <h1>{persona.profile.name}</h1>
+      <h2>{persona.profile.age} years old</h2>
+      <h3>{persona.profile.city}</h3>
       {isOwner && <button>Edit</button>}
       <div>Chat/Comment feature</div>
       <button>Delete Profile</button>

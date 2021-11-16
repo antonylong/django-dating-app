@@ -10,6 +10,7 @@ import ProfileList from "./personas/ProfileList";
 import MyProfile from "./personas/MyProfile";
 import Login from "./reglog/Login";
 import Registration from "./reglog/Registration";
+import ShowProfile from "./personas/ShowProfile";
 // import SecureRoute from "./common/SecureRoute";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/newprofile" element={<NewProfile />} />
         <Route path="/editprofile" element={<EditProfile />} />
+        <Route path="/personas/:id" element={<ShowProfile />} />
       </Routes>
     </BrowserRouter>
   );

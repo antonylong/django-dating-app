@@ -14,8 +14,8 @@ const NewProfile = () => {
       sexuality: "",
       occupation: "",
       bio: "",
-      profile_pic: ""
-    }
+      profile_pic: "",
+    },
   });
 
   const handleSubmit = async (e) => {
@@ -33,7 +33,7 @@ const NewProfile = () => {
   const handleChange = (e) => {
     const formData = {
       ...state.formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     };
     console.log("handleChange", formData);
     setState({ formData });
@@ -77,7 +77,7 @@ const NewProfile = () => {
         <label className="form-label">City:</label>
         <input
           className="form-control"
-          placeholder="21"
+          placeholder="Paris"
           name="city"
           value={state.formData.city}
           onChange={handleChange}
@@ -120,7 +120,7 @@ const NewProfile = () => {
         <label className="form-label">Occupation:</label>
         <input
           className="form-control"
-          placeholder="21"
+          placeholder="Chef"
           name="occupation"
           value={state.formData.occupation}
           onChange={handleChange}
