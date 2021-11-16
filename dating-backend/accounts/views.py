@@ -1,3 +1,5 @@
+from django.http import response
+from rest_framework import exceptions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -46,3 +48,17 @@ class LoginPage(APIView):
         )
         print(token)
         return Response({'token': token, 'message': f"Welcome back {user_to_login.username}"})
+
+class UserDetailView(APIView):
+    def get_user_by_id(self, id):
+        try:
+            return User.objects.get(id=id)
+        except User.DoesNotExist:
+            raise exceptions.NotFound(detail="Profile does not exist")
+
+    def get(self, _request, id):
+        persona = self.get_user_by_id(id)
+        serialized_persona = UserSerializer(persona)
+        return Response(serialized_persona.data, status=status.HTTP_200_OK)
+
+
