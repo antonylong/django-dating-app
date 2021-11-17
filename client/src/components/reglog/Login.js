@@ -35,7 +35,7 @@ const Login = () => {
       console.log("data", data);
       console.log(state.formData);
       setTokenToLocalStorage(data.token);
-      navigate("/search");
+      navigate("/newprofile");
     } catch (err) {
       console.error("Error logging in user", err);
     }

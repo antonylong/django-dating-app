@@ -24,7 +24,6 @@ Project is created with:
 - Python
 - Django
 - Restframework
-- Pillow
 - Balsamiq (for wireframing)
 - Webpack
 - Babel
