@@ -10,7 +10,7 @@ function Modal({ closeModel }) {
         <div className="newUser">
           <h3>First time logging in?</h3>
           <p>Please make sure you set up your profile</p>
-          <button onClick={() => navigate("/newprofile")}>New Profile</button>
+          <button onClick={() => closeModel(false)}>New Profile</button>
         </div>
         <div className="returnUser">
           <h3>Return user?</h3>
@@ -19,7 +19,7 @@ function Modal({ closeModel }) {
             match?
           </p>
           <button onClick={() => navigate("/myprofile/:id")}>My Profile</button>
-          <button onClick={() => closeModel(false)}>Search</button>
+          <button onClick={() => navigate("/search")}>Search</button>
         </div>
       </div>
     </div>

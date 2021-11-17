@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { getManyProfiles } from "../../api/profileApi";
-import Modal from "./Modal";
 import { useNavigate } from "react-router";
 
 const ProfileList = () => {
@@ -24,11 +23,8 @@ const ProfileList = () => {
 
   console.log("this is profiles", profiles);
 
-  const [openModal, setOpenModel] = useState(true);
-
   return (
     <>
-      {openModal && <Modal closeModel={setOpenModel} />}
       <div>A search/filter bar</div>
       <section>
         {profiles.profile.map((profile) => (
