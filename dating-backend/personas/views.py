@@ -7,12 +7,14 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from .serializers import PersonaSerializer
 from .models import Persona
 
+
 def index(request):
     list = Persona.objects.all()
     context = {"personas": list}
     return render(request, "personas/index.html", context)
 
 # check serializer name matches
+
 
 class PersonaListView(views.APIView):
     #parser_classes = [MultiPartParser, FormParser]
@@ -29,6 +31,7 @@ class PersonaListView(views.APIView):
             persona_to_add.save()
             return response.Response(persona_to_add.data, status=status.HTTP_201_CREATED)
         return response.Response(persona_to_add.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class PersonaDetailView(views.APIView):
     #parser_classes = [MultiPartParser, FormParser]
@@ -56,3 +59,17 @@ class PersonaDetailView(views.APIView):
             updated_persona.save()
             return response.Response(updated_persona.data, status=status.HTTP_202_ACCEPTED)
         return response.Response(updated_persona.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class PersonaUserView(views.APIView):
+
+    def get_persona_by_user(self, user):
+        try:
+            return Persona.objects.get(user=user)
+        except Persona.DoesNotExist:
+            raise exceptions.NotFound(detail="Profile does not exist")
+    
+
+    def get(self, _request, user):
+        persona = self.get_persona_by_user(user)
+        serialized_persona = PersonaSerializer(persona)
+        return response.Response(serialized_persona.data, status=status.HTTP_200_OK)
