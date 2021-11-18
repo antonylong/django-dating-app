@@ -25,7 +25,11 @@ const ProfileList = () => {
 
   return (
     <>
-      <div>A search/filter bar</div>
+      <div>
+        <form>
+          <input type="text" placeholder="A search function"></input>
+        </form>
+      </div>
       <section>
         {profiles.profile.map((profile) => (
           <>
