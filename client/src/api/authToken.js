@@ -2,6 +2,10 @@ export const getTokenFromLocalStorage = () => {
   return window.localStorage.getItem("token");
 };
 
+export const removeToken = () => {
+  window.localStorage.removeItem("token");
+};
+
 export const isLoggedIn = () => {
   const token = getTokenFromLocalStorage();
   if (!token) {

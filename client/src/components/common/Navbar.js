@@ -1,14 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 //import { useParams } from "react-router";
 // import { getSingleProfile } from "../../api/profileApi";
 import { useParams } from "react-router";
 // import { getPayload } from "../../api/authToken";
 import logo from "../../styles/assets/whitelogo.png";
+import { removeToken } from "../../api/authToken";
 // import { getSingleUser } from "../../api/userApi";
 
 const Navbar = () => {
   // const { id } = useParams();
+  const navigate = useNavigate();
   const { id } = useParams();
   // const [account, setAccount] = useState({ account: null });
 
@@ -33,6 +35,11 @@ const Navbar = () => {
 
   // const isOwner = getPayload().sub === account.id;
   // console.log("isOwner is", isOwner);
+
+  const handleClick = () => {
+    removeToken();
+    navigate("/");
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
@@ -75,7 +82,9 @@ const Navbar = () => {
             <Link to="/login" className="nav-link">
               Login
             </Link>
-            <button className="nav-link">Logout</button>
+            <button className="nav-link" onClick={handleClick}>
+              Logout
+            </button>
           </div>
         </div>
       </div>

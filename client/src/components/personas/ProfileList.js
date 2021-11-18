@@ -31,7 +31,7 @@ const ProfileList = () => {
           <>
             <h1 key={profile.id}>{profile.name}</h1>
             <h2>{profile.age}</h2>
-            <div>{profile.profile_pic}</div>
+            <img src={profile.profile_pic} alt="profile" />
             <button onClick={() => navigate(`/personas/${profile.id}/`)}>
               See More
             </button>
