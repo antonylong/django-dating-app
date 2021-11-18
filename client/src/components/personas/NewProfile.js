@@ -15,6 +15,7 @@ const NewProfile = () => {
       username: ""
     }
   });
+
   const [formData, setFormData] = useState({
     user: "",
     name: "",
@@ -45,6 +46,7 @@ const NewProfile = () => {
       .then((response) => {
         setUser({ user: response.data });
         console.log(JSON.stringify(response.data));
+        setFormData({ ...formData, user: response.data.id });
       })
       .catch((error) => {
         console.error("Something not right getting the user", error);
@@ -78,18 +80,27 @@ const NewProfile = () => {
     setFormData({ ...formData, profile_pic: url });
   };
   console.log("handleChange", formData);
+
+  const userId = user.user.id;
+  console.log("can i grab it?", userId);
+
   // there is a scrolling bug with the modal
   return (
     <>
       {openModal && <Modal closeModel={setOpenModel} />}
+      <label className="">Username:</label>
+      <input
+        readOnly
+        name="user"
+        className="form-control-plaintext"
+        value={user.user.username}
+      />
       <form className="">
         <div className="col-autos">
-          <label className="">Username:</label>
           <input
-            readOnly
+            //readOnly
             name="user"
             className="form-control-plaintext"
-            value={user.user.username}
           />
         </div>
         <br />
