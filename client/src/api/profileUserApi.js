@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8000/myprofile";
+const baseUrl = "http://localhost:8000";
 
-export const getMyProfile = (uid) => {
-  return axios.get(`${baseUrl}/${uid}`);
+export const getMyProfile = (user) => {
+  return axios.get(`${baseUrl}/personas/${user}`);
 };
 
 // userId = 8 for Ciel

@@ -27,7 +27,7 @@ function App() {
       <Navbar isAuthenticated={isAuthenticated} />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/myprofile/:id" element={<MyProfile />} />
+        <Route path="/personas/myprofile/:user" element={<MyProfile />} />
         <Route path="/search" element={<ProfileList />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Login />} />
