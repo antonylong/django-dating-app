@@ -18,8 +18,10 @@ function Modal({ closeModel }) {
             Welcome back! Would you like to see your profile or find a potential
             match?
           </p>
-          <button onClick={() => navigate("/myprofile/:id")}>My Profile</button>
           <button onClick={() => navigate("/all")}>See Matches</button>
+          <button onClick={() => navigate("/personas/myprofile/:user")}>
+            My Profile
+          </button>
         </div>
       </div>
     </div>

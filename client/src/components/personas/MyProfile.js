@@ -1,99 +1,59 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import React, { useState, useEffect } from "react";
+import { getMyProfile } from "../../api/profileUserApi";
 import { getPayload } from "../../api/authToken";
-import { getManyProfiles, getSingleProfile } from "../../api/profileApi";
-import { getSingleUser } from "../../api/userApi";
+import { useNavigate } from "react-router";
 
 const MyProfile = () => {
-  const { id } = useParams();
+  const navigate = useNavigate();
+
   const [persona, setPersona] = useState({ profile: "" });
-  const [userAcc, setUserAcc] = useState({ user: "" });
-  const [profiles, setProfiles] = useState({ profile: [] });
 
-  const accId = getPayload().sub;
+  const user = getPayload().sub;
+  console.log("this is user", user);
 
-  console.log("this is accId", accId);
-
-  const getProfilesFromApi = async () => {
+  const getMyProfileApi = async () => {
     try {
-      const response = await getManyProfiles();
-      setProfiles({ profile: response.data });
-    } catch (error) {
-      console.error("An error occured getting all profiles", error);
-    }
-  };
-
-  const userId = profiles.profile;
-  console.log("this is profiles", profiles.profile);
-  console.log("trying to get userId", userId);
-
-  const filterId = userId.map((id) => id.user);
-  console.log("this is filter id", filterId);
-  if (filterId.data === accId) {
-    console.log("this is working");
-  } else {
-    console.log("no this didnt work");
-  }
-  // match.params.id
-  const userArray = "";
-  console.log(userArray);
-
-  const getOneProfile = async () => {
-    try {
-      const res = await getSingleProfile(1);
+      const res = await getMyProfile(user);
       setPersona({ profile: res.data });
-    } catch (err) {
-      console.error(`An error occurred fetching profile ${id}`, err);
+    } catch (error) {
+      console.error(error);
     }
   };
 
-  const getOneUser = async () => {
-    try {
-      const res = await getSingleUser(accId);
-      setUserAcc({ profile: res.data });
-    } catch (err) {
-      console.error(`An error occurred fetching user`, err);
-    }
-  };
+  console.log("this is persona", persona);
 
   useEffect(() => {
-    console.log("are we having a useEffet");
-    getOneProfile();
-    getOneUser();
-    getProfilesFromApi();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    getMyProfileApi();
   }, []);
 
-  console.log("this is userAcc", userAcc);
-
-  // basically need to search/filter through the userId of the personas.
-  // do i need to getAll
-
-  console.log("this is getPayload", getPayload().sub);
-
-  // this is where we can see the connection between the user (getPayload.sub) and the profile (profile.user = userID)
+  // this is to make sure that the user is matched with the profile in a more secure way for the Edit/Delete function
   const isOwner = getPayload().sub === persona.profile.user;
-  console.log(
-    "this is getpayload",
-    getPayload().sub,
-    "and this is profileuser",
-    persona.profile.user
-  );
   console.log("isOwner is", isOwner);
 
   return (
     <>
+      {" "}
       <div>
+        {" "}
         <figure>
-          <img src={persona.profile.profile_pic} alt="the user profile" />
-        </figure>
+          <img src={persona.profile.profile_pic} alt="the user profile" />{" "}
+        </figure>{" "}
       </div>
       <h1>{persona.profile.name}</h1>
       <h2>{persona.profile.age} years old</h2>
-      <h3>{persona.profile.city}</h3>
-      {isOwner && <button>Edit</button>}
-      <div>Chat/Comment feature</div>
-      {isOwner && <button>Delete Profile</button>}
+      <h3>City: {persona.profile.city}</h3>
+      <h3>I work as a: {persona.profile.occupation}</h3>
+      <p>Bio: {persona.profile.city}</p>
+      <p>
+        I identify as {persona.profile.gender} and {persona.profile.sexuality}
+      </p>
+      <p>I am {persona.profile.height}</p>
+      {isOwner && (
+        <button onClick={() => navigate("/personas/myprofile/:user/edit")}>
+          Edit
+        </button>
+      )}{" "}
+      {isOwner && <button>Delete Profile</button>} <h3>Comments</h3>
     </>
   );
 };

@@ -28,13 +28,16 @@ function App() {
       <Navbar isAuthenticated={isAuthenticated} />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/myprofile/:id" element={<MyProfile />} />
         <Route path="/all" element={<ProfileList />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/personas/myprofile/:user" element={<MyProfile />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/newprofile" element={<NewProfile />} />
-        <Route path="/editprofile" element={<EditProfile />} />
+        <Route
+          path="/personas/myprofile/:user/edit"
+          element={<EditProfile />}
+        />
         <Route path="/personas/:id" element={<ShowProfile />} />
       </Routes>
     </BrowserRouter>

@@ -12,7 +12,7 @@ import { removeToken } from "../../api/authToken";
 const Navbar = () => {
   // const { id } = useParams();
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { id, user } = useParams();
   // const [account, setAccount] = useState({ account: null });
 
   // const getTheUser = async () => {
@@ -74,7 +74,7 @@ const Navbar = () => {
             <Link to="/all" className="nav-link">
               Profiles
             </Link>
-            <Link to={`/myprofile/${id}`} className="nav-link">
+            <Link to={`/personas/myprofile/${user}`} className="nav-link">
               My Profile
             </Link>
             <Link to="/register" className="nav-link">
