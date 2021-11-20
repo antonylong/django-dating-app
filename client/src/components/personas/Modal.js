@@ -19,7 +19,7 @@ function Modal({ closeModel }) {
             match?
           </p>
           <button onClick={() => navigate("/myprofile/:id")}>My Profile</button>
-          <button onClick={() => navigate("/search")}>Search</button>
+          <button onClick={() => navigate("/all")}>See Matches</button>
         </div>
       </div>
     </div>

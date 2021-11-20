@@ -61,6 +61,7 @@ const MyProfile = () => {
     getOneProfile();
     getOneUser();
     getProfilesFromApi();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log("this is userAcc", userAcc);

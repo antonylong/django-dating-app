@@ -11,6 +11,7 @@ import MyProfile from "./personas/MyProfile";
 import Login from "./reglog/Login";
 import Registration from "./reglog/Registration";
 import ShowProfile from "./personas/ShowProfile";
+import Search from "./common/Search";
 // import SecureRoute from "./common/SecureRoute";
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/myprofile/:id" element={<MyProfile />} />
-        <Route path="/search" element={<ProfileList />} />
+        <Route path="/all" element={<ProfileList />} />
+        <Route path="/search" element={<Search />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/newprofile" element={<NewProfile />} />

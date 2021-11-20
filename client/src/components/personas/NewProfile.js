@@ -30,7 +30,6 @@ const NewProfile = () => {
   });
 
   // check and get of user id from token
-
   // get the user from backend to attach to persona
   const getTheUser = async () => {
     const id = getPayload().sub;
@@ -96,14 +95,6 @@ const NewProfile = () => {
         value={user.user.username}
       />
       <form className="">
-        <div className="col-autos">
-          <input
-            //readOnly
-            name="user"
-            className="form-control-plaintext"
-          />
-        </div>
-        <br />
         <div className="mb-3">
           <label className="form-label">Name:</label>
           <input
