@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "206d50faf29310c1ce7feb18d9c687a05f6c950e81a3822db58cdf72f57a9f32"
+            "sha256": "b73c8d2c73b992bb109b1401f81c35796d9f3afd59d6e68ff733c11bd0ce76c2"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -38,6 +38,14 @@
             ],
             "index": "pypi",
             "version": "==3.2.9"
+        },
+        "django-cors-headers": {
+            "hashes": [
+                "sha256:cba6e99659abb0e47cc4aaabb8fcde03f193e6bb3b92ba47c5185ec4cedc5d9e",
+                "sha256:cd6f4360f5246569c149dc1c40c907c191f1ec45551e10d2a2e2e68512652f78"
+            ],
+            "index": "pypi",
+            "version": "==3.10.0"
         },
         "django-on-heroku": {
             "hashes": [
@@ -96,6 +104,14 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==2.9.2"
+        },
+        "pyjwt": {
+            "hashes": [
+                "sha256:b888b4d56f06f6dcd777210c334e69c737be74755d3e5e9ee3fe67dc18a0ee41",
+                "sha256:e0c4bb8d9f0af0c7f5b1ec4c5036309617d03d56932877f2f7a0beeb5318322f"
+            ],
+            "index": "pypi",
+            "version": "==2.3.0"
         },
         "pytz": {
             "hashes": [
