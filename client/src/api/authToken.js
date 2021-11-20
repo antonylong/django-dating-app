@@ -36,7 +36,7 @@ export const getPayload = () => {
   const jwt = atob(parts[1]);
   const jwtParsed = JSON.parse(jwt);
 
-  console.log({ jwt, token, parts });
+  // console.log({ jwt, token, parts });
 
   return jwtParsed;
 };
