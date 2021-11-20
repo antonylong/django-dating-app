@@ -9,3 +9,7 @@ export const getAllUsers = () => {
 export const getSingleUser = (id) => {
   return axios.get(`${baseUrl}/${id}/`);
 };
+
+export const deleteTheUser = (id) => {
+  return axios.delete(`${baseUrl}/${id}`);
+};
