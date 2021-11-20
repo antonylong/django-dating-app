@@ -54,15 +54,10 @@ class Persona(models.Model):
         max_length=9, choices=SEXUALITY_CHOICE, default="Other")
 
     occupation = models.CharField(max_length=50)
-<<<<<<< HEAD
-    bio = models.TextField()
-    #profile_pic = models.ImageField(_("Image"), upload_to=upload_to, default='posts/default.png', null=True, blank=True)
-=======
     bio = models.CharField(max_length=500)
->>>>>>> 1490fed91c1c1d2fca0421b4201cbb5195199afa
     profile_pic = models.CharField(max_length=500, blank=True)
 
-    comment = models.ForeignKey(Comment, )
+    # comment = models.ForeignKey(Comment, )
 
     def __str__(self):
         return f"{self.name} ({self.id})"
