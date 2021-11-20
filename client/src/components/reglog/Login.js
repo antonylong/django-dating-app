@@ -42,27 +42,37 @@ const Login = () => {
   };
 
   return (
-    <form>
-      <h1>Please Log in</h1>
+    <div className="login-container">
+      <div className="row">
+        <div className="col-lg-3"></div>
+        <div className="col-lg-6">
+          <form>
+            <h1>Login</h1>
 
-      <label>Username:</label>
-      <input
-        type="text"
-        name="username"
-        value={state.formData.username}
-        onChange={handleChange}
-      ></input>
-      <br />
-      <label>Password:</label>
-      <input
-        type="password"
-        name="password"
-        value={state.formData.password}
-        onChange={handleChange}
-      ></input>
-      <br />
-      <button onClick={handleSubmit}>Login</button>
-    </form>
+            <label className="form-label">Username:</label>
+            <input
+              className="form-control"
+              type="text"
+              name="username"
+              value={state.formData.username}
+              onChange={handleChange}
+            ></input>
+            <br />
+            <label className="form-label">Password:</label>
+            <input
+              className="form-control"
+              type="password"
+              name="password"
+              value={state.formData.password}
+              onChange={handleChange}
+            ></input>
+            <br />
+            <button onClick={handleSubmit}>Login</button>
+          </form>
+        </div>
+        <div className="col-lg-3"></div>
+      </div>
+    </div>
   );
 };
 
