@@ -13,8 +13,15 @@ export const getSingleProfile = (id) => {
 
 export const deleteProfileConfig = (user) => {
   const requestConfig = {
-    headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
+    headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` }
   };
 
   return axios.delete(`${baseUrl}/myprofile/${user}`, requestConfig);
 };
+
+export const axiosSearch = axios.create({
+  baseURL: "http://localhost:8000/personas/",
+  headers: {
+    Authorization: `Bearer ${getTokenFromLocalStorage()}`
+  }
+});
