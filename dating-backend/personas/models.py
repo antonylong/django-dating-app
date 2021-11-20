@@ -16,35 +16,35 @@ class Persona(models.Model):
     height = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
 
-    MALE = 'MAL'
-    FEMALE = 'FEM'
-    NONBINARY = 'NON'
-    OTHER = 'OTH'
+    Male = 'MAL'
+    Female = 'FEM'
+    Nonbinary = 'NON'
+    Other = 'OTH'
     GENDER_CHOICE = [
-        ('MALE', 'Male'),
-        ('FEMALE', 'Female'),
-        ('NONBINARY', 'Non-Binary'),
-        ('OTHER', 'Other'),
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Nonbinary', 'Non-Binary'),
+        ('Other', 'Other'),
     ]
     gender = models.CharField(
-        max_length=9, choices=GENDER_CHOICE, default=OTHER)
+        max_length=9, choices=GENDER_CHOICE, default="Other")
 
-    STRAIGHT = 'STR'
-    GAY = 'GAY'
-    BISEXUAL = 'BI'
-    ASEXUAL = 'ASX'
-    PANSEXUAL = 'PAN'
-    OTHER = 'OTH'
+    # STRAIGHT = 'STR'
+    # GAY = 'GAY'
+    # BISEXUAL = 'BI'
+    # ASEXUAL = 'ASX'
+    # PANSEXUAL = 'PAN'
+    # OTHER = 'OTH'
     SEXUALITY_CHOICE = [
-        ('STRAIGHT', 'Straight'),
-        ('GAY', 'Gay'),
-        ('BISEXUAL', 'Bisexual'),
-        ('ASEXUAL', 'Asexual'),
-        ('PANSEXUAL', 'Pansexual'),
-        ('OTHER', 'Other'),
+        ('Straight', 'Straight'),
+        ('Gay', 'Gay'),
+        ('Bisexual', 'Bisexual'),
+        ('Asexual', 'Asexual'),
+        ('Pansexual', 'Pansexual'),
+        ('Other', 'Other'),
     ]
     sexuality = models.CharField(
-        max_length=9, choices=SEXUALITY_CHOICE, default=OTHER)
+        max_length=9, choices=SEXUALITY_CHOICE, default="Other")
 
     occupation = models.CharField(max_length=50)
     bio = models.CharField(max_length=500)

@@ -32,7 +32,10 @@ function App() {
         <Route path="/register" element={<Registration />} />
         <Route path="/login" element={<Login />} />
         <Route path="/newprofile" element={<NewProfile />} />
-        <Route path="/editprofile" element={<EditProfile />} />
+        <Route
+          path="/personas/myprofile/:user/edit"
+          element={<EditProfile />}
+        />
         <Route path="/personas/:id" element={<ShowProfile />} />
       </Routes>
     </BrowserRouter>

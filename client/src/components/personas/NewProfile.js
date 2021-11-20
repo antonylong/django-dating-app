@@ -12,8 +12,8 @@ const NewProfile = () => {
     user: {
       id: "",
       email: "",
-      username: ""
-    }
+      username: "",
+    },
   });
 
   const [formData, setFormData] = useState({
@@ -26,7 +26,7 @@ const NewProfile = () => {
     sexuality: "",
     occupation: "",
     bio: "",
-    profile_pic: ""
+    profile_pic: "",
   });
 
   // check and get of user id from token
@@ -39,7 +39,7 @@ const NewProfile = () => {
     let config = {
       method: "get",
       url: `http://localhost:8000/accounts/${id}/`,
-      headers: {}
+      headers: {},
     };
 
     await axios(config)
@@ -63,7 +63,7 @@ const NewProfile = () => {
     try {
       await axios.post("http://localhost:8000/personas/", formData);
       console.log(formData);
-      navigate("/myprofile/:id");
+      navigate("/personas/myprofile/:user");
     } catch (err) {
       console.error("Error creating persona data", err);
     }
@@ -72,7 +72,7 @@ const NewProfile = () => {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -159,10 +159,10 @@ const NewProfile = () => {
           onChange={handleChange}
         >
           <option>Select Gender</option>
-          <option value="MALE">Male</option>
-          <option value="FEMALE">Female</option>
-          <option value="NONBINARY">Non-Binary</option>
-          <option value="OTHER">Other</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Nonbinary">Non-Binary</option>
+          <option value="Other">Other</option>
         </select>
         <br />
         <label className="form-label">Sexuality:</label>
@@ -174,12 +174,12 @@ const NewProfile = () => {
           onChange={handleChange}
         >
           <option>Select Sexuality</option>
-          <option value="STRAIGHT">Straight</option>
-          <option value="GAY">Gay</option>
-          <option value="BISEXUAL">Bisexual</option>
-          <option value="ASEXUAL">Asexual</option>
-          <option value="PANSEXUAL">Pansexual</option>
-          <option value="OTHER">Other</option>
+          <option value="Straight">Straight</option>
+          <option value="Gay">Gay</option>
+          <option value="Bisexual">Bisexual</option>
+          <option value="Asexual">Asexual</option>
+          <option value="Pansexual">Pansexual</option>
+          <option value="Other">Other</option>
         </select>
         <br />
         <div className="mb-3">
