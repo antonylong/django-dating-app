@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getMyProfile } from "../../api/profileUserApi";
 import { getPayload } from "../../api/authToken";
 import { useNavigate } from "react-router";
+import { deleteTheUser } from "../../api/userApi";
 
 const MyProfile = () => {
   const navigate = useNavigate();
@@ -20,7 +21,15 @@ const MyProfile = () => {
     }
   };
 
-  console.log("this is persona", persona);
+  const handleDelete = async () => {
+    // perhaps put an alert [Are you sure you want to delete your account? And then 'If yes, Delete User + Logout + Push to Welcome Page]
+    try {
+      await deleteTheUser(user);
+      navigate("/register");
+    } catch (error) {
+      console.error("failed deleting the user", error);
+    }
+  };
 
   useEffect(() => {
     getMyProfileApi();
@@ -53,7 +62,8 @@ const MyProfile = () => {
           Edit
         </button>
       )}{" "}
-      {isOwner && <button>Delete Profile</button>} <h3>Comments</h3>
+      {isOwner && <button onClick={handleDelete}>Delete Profile</button>}{" "}
+      <h3>Comments</h3>
     </>
   );
 };
