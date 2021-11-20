@@ -13,7 +13,7 @@ export const getSingleProfile = (id) => {
 
 export const createProfileConfig = (user, formData) => {
   const requestConfig = {
-    headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
+    headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` }
   };
 
   return axios.post(`${baseUrl}/myprofile/${user}`, formData, requestConfig);
@@ -21,7 +21,7 @@ export const createProfileConfig = (user, formData) => {
 
 export const editProfileConfig = (user, formData) => {
   const requestConfig = {
-    headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
+    headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` }
   };
 
   return axios.put(`${baseUrl}/myprofile/${user}`, formData, requestConfig);
@@ -29,8 +29,15 @@ export const editProfileConfig = (user, formData) => {
 
 export const deleteProfileConfig = (user) => {
   const requestConfig = {
-    headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
+    headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` }
   };
 
   return axios.delete(`${baseUrl}/myprofile/${user}`, requestConfig);
 };
+
+export const axiosSearch = axios.create({
+  baseURL: "http://localhost:8000/personas/",
+  headers: {
+    Authorization: `Bearer ${getTokenFromLocalStorage()}`
+  }
+});

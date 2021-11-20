@@ -6,6 +6,7 @@ import { useParams } from "react-router";
 // import { getPayload } from "../../api/authToken";
 import logo from "../../styles/assets/whitelogo.png";
 import { removeToken } from "../../api/authToken";
+
 // import { getSingleUser } from "../../api/userApi";
 
 const Navbar = () => {
@@ -70,7 +71,7 @@ const Navbar = () => {
             <Link to="/" className="nav-link">
               Home
             </Link>
-            <Link to="/search" className="nav-link">
+            <Link to="/all" className="nav-link">
               Profiles
             </Link>
             <Link to={`/personas/myprofile/${user}`} className="nav-link">

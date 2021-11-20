@@ -1,7 +1,8 @@
 from django.shortcuts import render
 
 from rest_framework import views, response, status, exceptions
-from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework import filters
+from rest_framework import generics
 
 # add serilaizer when done
 from .serializers import PersonaSerializer
@@ -17,7 +18,6 @@ def index(request):
 
 
 class PersonaListView(views.APIView):
-    #parser_classes = [MultiPartParser, FormParser]
 
     def get(self, _request):
         personas = Persona.objects.all()
@@ -34,7 +34,6 @@ class PersonaListView(views.APIView):
 
 
 class PersonaDetailView(views.APIView):
-    #parser_classes = [MultiPartParser, FormParser]
 
     def get_persona_by_id(self, id):
         try:
@@ -73,3 +72,10 @@ class PersonaUserView(views.APIView):
         persona = self.get_persona_by_user(user)
         serialized_persona = PersonaSerializer(persona)
         return response.Response(serialized_persona.data, status=status.HTTP_200_OK)
+
+class PersonaListDetailfilter(generics.ListAPIView):
+
+    queryset = Persona.objects.all()
+    serializer_class = PersonaSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['age', 'city', 'gender', 'sexuality', 'occupation']

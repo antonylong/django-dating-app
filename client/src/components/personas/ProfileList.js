@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { getManyProfiles } from "../../api/profileApi";
 import { useNavigate } from "react-router";
+import SearchBar from "material-ui-search-bar";
 
 const ProfileList = () => {
   const [profiles, setProfiles] = useState({ profile: [] });
+  const [data, setData] = useState({ search: "" });
 
   const navigate = useNavigate();
 
@@ -23,13 +25,21 @@ const ProfileList = () => {
 
   console.log("this is profiles", profiles);
 
+  const goSearch = (e) => {
+    navigate({
+      pathname: "/search/",
+      search: "?search=" + data.search
+    });
+    window.location.reload();
+  };
+
   return (
     <>
-      <div>
-        <form>
-          <input type="text" placeholder="A search function"></input>
-        </form>
-      </div>
+      <SearchBar
+        value={data.search}
+        onChange={(newValue) => setData({ search: newValue })}
+        onRequestSearch={() => goSearch(data.search)}
+      />
       <section>
         {profiles.profile.map((profile) => (
           <>
