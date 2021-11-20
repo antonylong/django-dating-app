@@ -4,10 +4,32 @@ import axios from "axios";
 import { getPayload } from "../../api/authToken";
 import ImageUploadField from "./ImageUploadField";
 import { getTokenFromLocalStorage } from "../../api/authToken";
+import { getMyProfile } from "../../api/profileUserApi";
 
 const EditProfile = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState({
+
+  const [persona, setPersona] = useState({ profile: "" });
+
+  const user = getPayload().sub;
+  console.log("this is user", user);
+
+  const getMyProfileApi = async () => {
+    try {
+      const res = await getMyProfile(user);
+      setPersona({ profile: res.data });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  console.log("this is personaID", persona.profile.id);
+
+  useEffect(() => {
+    getMyProfileApi();
+  }, []);
+
+  const [acc, setAcc] = useState({
     user: {
       id: "",
       email: "",
@@ -44,7 +66,7 @@ const EditProfile = () => {
 
     await axios(config)
       .then((response) => {
-        setUser({ user: response.data });
+        setAcc({ user: response.data });
         console.log(JSON.stringify(response.data));
         setFormData({ ...formData, user: response.data.id });
       })
@@ -58,26 +80,27 @@ const EditProfile = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const editProfileApi = (id, formData) => {
+  const personaId = persona.profile.id;
+
+  const editProfileApi = (personaID, formData) => {
     const requestConfig = {
       headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
     };
 
+    console.log("this is personaID in getProfileAPI", personaID);
+
     return axios.put(
-      `http://localhost:8000/personas/${id}`,
+      `http://localhost:8000/personas/${personaID}/`,
       formData,
       requestConfig
     );
   };
 
-  const id = formData.id;
-  console.log("this is formdataID", id);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = getPayload().sub;
     try {
-      const res = await editProfileApi(id, formData);
+      const res = await editProfileApi(personaId, formData);
       console.log("this is response", res);
       navigate(`/personas/myprofile/${user}`);
     } catch (err) {
@@ -97,9 +120,6 @@ const EditProfile = () => {
   };
   console.log("handleChange", formData);
 
-  const userId = user.user.id;
-  console.log("can i grab it?", userId);
-
   // there is a scrolling bug with the modal
   return (
     <>
@@ -108,7 +128,7 @@ const EditProfile = () => {
         readOnly
         name="user"
         className="form-control-plaintext"
-        value={user.user.username}
+        value={acc.user.username}
       />
       <form className="">
         <div className="col-autos">
