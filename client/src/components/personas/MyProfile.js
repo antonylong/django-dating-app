@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { getMyProfile } from "../../api/profileUserApi";
 import { getPayload } from "../../api/authToken";
+import { useNavigate } from "react-router";
 
 const MyProfile = () => {
+  const navigate = useNavigate();
+
   const [persona, setPersona] = useState({ profile: "" });
 
   const user = getPayload().sub;
@@ -45,7 +48,11 @@ const MyProfile = () => {
         I identify as {persona.profile.gender} and {persona.profile.sexuality}
       </p>
       <p>I am {persona.profile.height}</p>
-      {isOwner && <button>Edit</button>}{" "}
+      {isOwner && (
+        <button onClick={() => navigate("/personas/myprofile/:user/edit")}>
+          Edit
+        </button>
+      )}{" "}
       {isOwner && <button>Delete Profile</button>} <h3>Comments</h3>
     </>
   );

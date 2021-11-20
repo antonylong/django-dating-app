@@ -63,7 +63,7 @@ const NewProfile = () => {
     try {
       await axios.post("http://localhost:8000/personas/", formData);
       console.log(formData);
-      navigate("/myprofile/:id");
+      navigate("/personas/myprofile/:user");
     } catch (err) {
       console.error("Error creating persona data", err);
     }
@@ -161,7 +161,7 @@ const NewProfile = () => {
           <option>Select Gender</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
-          <option value="Non-binary">Non-Binary</option>
+          <option value="Nonbinary">Non-Binary</option>
           <option value="Other">Other</option>
         </select>
         <br />
