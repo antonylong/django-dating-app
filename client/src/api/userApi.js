@@ -11,5 +11,5 @@ export const getSingleUser = (id) => {
 };
 
 export const deleteTheUser = (id) => {
-  return axios.delete(`${baseUrl}/${id}`);
+  return axios.delete(`${baseUrl}/${id}/`);
 };

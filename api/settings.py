@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import django_on_heroku
 import os
 from pathlib import Path
 
@@ -62,7 +63,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, './../client/build')
+            os.path.join(BASE_DIR, 'client')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -79,7 +80,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'api.wsgi.application'
 
 CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000"
+    "http://localhost:3000",
+    'http://127.0.0.1:8000'
 ]
 
 
@@ -130,6 +132,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+ROOT_URLCONF = 'api.urls'
+
 STATIC_URL = '/static/'
 
 # Default primary key field type
@@ -137,7 +141,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, './../client/build/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'client', "build", "static")]
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -150,3 +154,5 @@ REST_FRAMEWORK = {
         'accounts.authentication.JWTAuthentication'
     ],
 }
+
+django_on_heroku.settings(locals())

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Comment, Persona
+from .models import Persona
 
 
 class PersonaSerializer(serializers.ModelSerializer):
@@ -7,7 +7,7 @@ class PersonaSerializer(serializers.ModelSerializer):
         model = Persona
         fields = "__all__"
 
-class CommentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Comment
-        fields = "__all__"
+# class CommentSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Comment
+#         fields = "__all__"
