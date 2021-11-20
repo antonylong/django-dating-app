@@ -30,6 +30,7 @@ Project is created with:
 - SASS
 - JWT
 - Bootstrap (for styling)
+- Material UI Search Bar
 
 ## Setup
 
