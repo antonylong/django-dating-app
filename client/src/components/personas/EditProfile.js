@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getPayload } from "../../api/authToken";
 import ImageUploadField from "./ImageUploadField";
+import { getTokenFromLocalStorage } from "../../api/authToken";
 
 const EditProfile = () => {
   const navigate = useNavigate();
@@ -57,12 +58,28 @@ const EditProfile = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const editProfileApi = (id, formData) => {
+    const requestConfig = {
+      headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
+    };
+
+    return axios.put(
+      `http://localhost:8000/personas/${id}`,
+      formData,
+      requestConfig
+    );
+  };
+
+  const id = formData.id;
+  console.log("this is formdataID", id);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const user = getPayload().sub;
     try {
-      await axios.put("http://localhost:8000/personas/", formData);
-      console.log("this is form data", formData);
-      navigate("/personas/myprofile/:user");
+      const res = await editProfileApi(id, formData);
+      console.log("this is response", res);
+      navigate(`/personas/myprofile/${user}`);
     } catch (err) {
       console.error("Error updating persona data", err);
     }
@@ -215,7 +232,7 @@ const EditProfile = () => {
             onClick={handleSubmit}
             className="btn btn-primary mb-3"
           >
-            Update New Profile
+            Update Profile
           </button>
         </div>
       </form>
