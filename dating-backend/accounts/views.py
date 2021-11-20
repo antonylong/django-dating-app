@@ -69,10 +69,10 @@ class UserDetailView(views.APIView):
         serialized_user = UserSerializer(user)
         return response.Response(serialized_user.data, status=status.HTTP_200_OK)
 
-    # def delete(self, _request, id):
-    #     persona = self.get_persona_by_id(id)
-    #     persona.delete()
-    #     return response.Response(status=status.HTTP_204_NO_CONTENT)
+    def delete(self, _request, id):
+        persona = self.get_user_by_id(id)
+        persona.delete()
+        return response.Response(status=status.HTTP_204_NO_CONTENT)
 
     # def put(self, request, id):
     #     persona = self.get_persona_by_id(id)
