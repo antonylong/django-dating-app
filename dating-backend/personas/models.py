@@ -6,14 +6,14 @@ from django.contrib import admin
 #def upload_to(instance, filename):
 #    return 'posts/{filename}'.format(filename=filename)
 
-class Comment(models.Model):
-    profile = models.ForeignKey(Persona, on_delete=models.CASCADE, related_name="comments")
-    name = models.CharField(max_length=400)
-    body = models.TextField()
-    dated_added = models.DateTimeField(auto_now_add=True)
+# class Comment(models.Model):
+#     profile = models.ForeignKey(Persona, on_delete=models.CASCADE, related_name="comments")
+#     name = models.CharField(max_length=400)
+#     body = models.TextField()
+#     dated_added = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return "%s - %s" % (self.post.title, self.name)
+#     def __str__(self):
+#         return "%s - %s" % (self.post.title, self.name)
 
 class Persona(models.Model):
     user = models.OneToOneField(
