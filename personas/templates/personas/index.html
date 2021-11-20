@@ -1,0 +1,16 @@
+<h1>Personas</h1>
+
+<ul>
+  {% for persona in personas %}
+  <li>{{ persona.user }}</li>
+  <li>{{ persona.name }}</li>
+  <li>{{ persona.age }}</li>
+  <li>{{ persona.height }}</li>
+  <li>{{ persona.city }}</li>
+  <li>{{ persona.gender }}</li>
+  <li>{{ persona.sexuality }}</li>
+  <li>{{ persona.occupation }}</li>
+  <li>{{ persona.bio }}</li>
+  <li>{{ persona.profile_pic }}</li>
+  {% endfor %}
+</ul>
