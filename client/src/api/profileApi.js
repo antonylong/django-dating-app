@@ -16,7 +16,7 @@ export const deleteProfileConfig = (user) => {
     headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` }
   };
 
-  return axios.delete(`${baseUrl}/myprofile/${user}`, requestConfig);
+  return axios.delete(`${baseUrl}/myprofile/${user}/`, requestConfig);
 };
 
 export const axiosSearch = axios.create({

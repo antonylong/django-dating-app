@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Persona, Comment
+from .models import Persona
 
 # Register your models here.
 
 admin.site.register(Persona)
-admin.site.register(Comment)
+#admin.site.register(Comment)

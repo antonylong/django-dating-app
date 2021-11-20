@@ -3,7 +3,7 @@ import axios from "axios";
 const baseUrl = "http://localhost:8000";
 
 export const getMyProfile = (user) => {
-  return axios.get(`${baseUrl}/personas/myprofile/${user}`);
+  return axios.get(`${baseUrl}/personas/myprofile/${user}/`);
 };
 
 // userId = 8 for Ciel

@@ -63,13 +63,13 @@ class Persona(models.Model):
         return f"{self.name} ({self.id})"
 
 
-class CommentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'body', 'post', 'created_on', 'active')
-    list_filter = ('active', 'created_on')
-    search_fields = ('name', 'email', 'body')
-    actions = ['approve_comments']
+# class CommentAdmin(admin.ModelAdmin):
+#     list_display = ('name', 'body', 'post', 'created_on', 'active')
+#     list_filter = ('active', 'created_on')
+#     search_fields = ('name', 'email', 'body')
+#     actions = ['approve_comments']
 
-    def approve_comments(self, request, queryset):
-        queryset.update(active=True)
+#     def approve_comments(self, request, queryset):
+#         queryset.update(active=True)
 
 # now we can use persona.comments.all() to get all the comments to a persona??

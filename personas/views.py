@@ -5,8 +5,8 @@ from rest_framework import filters
 from rest_framework import generics
 
 # add serilaizer when done
-from .serializers import CommentSerializer, PersonaSerializer
-from .models import Persona, Comment
+from .serializers import PersonaSerializer
+from .models import Persona
 
 
 def index(request):
@@ -80,18 +80,18 @@ class PersonaListDetailfilter(generics.ListAPIView):
     filter_backends = [filters.SearchFilter]
     search_fields = ['age', 'city', 'gender', 'sexuality', 'occupation']
 
-class CommentPersonaView(views.APIView):
+# class CommentPersonaView(views.APIView):
 
-    def get_comment_by_persona(self, id):
-        try:
-            return Comment.objects.get(id=id)
-        except Comment.DoesNotExist:
-            raise exceptions.NotFound(detail="Comments don't exist")
+#     def get_comment_by_persona(self, id):
+#         try:
+#             return Comment.objects.get(id=id)
+#         except Comment.DoesNotExist:
+#             raise exceptions.NotFound(detail="Comments don't exist")
 
-    def get(self, _request, id):
-        comments = self.get_comment_by_persona(id)
-        serialized_comment = CommentSerializer(comments)
-        return response.Response(serialized_comment.data, status=status.HTTP_200_OK)
+#     def get(self, _request, id):
+#         comments = self.get_comment_by_persona(id)
+#         serialized_comment = CommentSerializer(comments)
+#         return response.Response(serialized_comment.data, status=status.HTTP_200_OK)
 
     # def post(self, request):
     #     print(request.data)
@@ -101,26 +101,26 @@ class CommentPersonaView(views.APIView):
     #         return response.Response(persona_to_add.data, status=status.HTTP_201_CREATED)
     #     return response.Response(persona_to_add.errors, status=status.HTTP_400_BAD_REQUEST)    
 
-class CommentView(views.APIView):
+# class CommentView(views.APIView):
 
-    def get_comment_by_id(self, id):
-        try:
-            return Comment.objects.get(id=id)
-        except Comment.DoesNotExist:
-            raise exceptions.NotFound(detail="Comment does not exist")
+#     def get_comment_by_id(self, id):
+#         try:
+#             return Comment.objects.get(id=id)
+#         except Comment.DoesNotExist:
+#             raise exceptions.NotFound(detail="Comment does not exist")
 
-    def get(self, _request, id):
-        comment = self.get_comment_by_id(id)
-        serialized_comment = CommentSerializer(comment)
-        return response.Response(serialized_comment.data, status=status.HTTP_200_OK)
+#     def get(self, _request, id):
+#         comment = self.get_comment_by_id(id)
+#         serialized_comment = CommentSerializer(comment)
+#         return response.Response(serialized_comment.data, status=status.HTTP_200_OK)
 
-    def post(self, request, id):
-        print(request.data)
-        comment_to_add = CommentSerializer(data=request.data)
-        if comment_to_add.is_valid():
-            comment_to_add.save()
-            return response.Response(comment_to_add.data, status=status.HTTP_201_CREATED)
-        return response.Response(comment_to_add.errors, status=status.HTTP_400_BAD_REQUEST)
+#     def post(self, request, id):
+#         print(request.data)
+#         comment_to_add = CommentSerializer(data=request.data)
+#         if comment_to_add.is_valid():
+#             comment_to_add.save()
+#             return response.Response(comment_to_add.data, status=status.HTTP_201_CREATED)
+#         return response.Response(comment_to_add.errors, status=status.HTTP_400_BAD_REQUEST)
 
     # def delete(self, _request, id):
     #     comment = self.get_comment_by_id(id)
