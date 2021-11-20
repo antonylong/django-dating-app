@@ -52,7 +52,7 @@ const MyProfile = () => {
       <h2>{persona.profile.age} years old</h2>
       <h3>City: {persona.profile.city}</h3>
       <h3>I work as a: {persona.profile.occupation}</h3>
-      <p>Bio: {persona.profile.city}</p>
+      <p>Bio: {persona.profile.bio}</p>
       <p>
         I identify as {persona.profile.gender} and {persona.profile.sexuality}
       </p>
