@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8000/accounts";
+const baseUrl = "/accounts";
 
 export const getAllUsers = () => {
   return axios.get(`${baseUrl}/`);

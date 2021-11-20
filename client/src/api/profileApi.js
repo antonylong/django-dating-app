@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getTokenFromLocalStorage } from "./authToken";
 
-const baseUrl = "http://localhost:8000/personas";
+const baseUrl = "/personas";
 
 export const getManyProfiles = () => {
   return axios.get(`${baseUrl}/`);
@@ -20,7 +20,7 @@ export const deleteProfileConfig = (user) => {
 };
 
 export const axiosSearch = axios.create({
-  baseURL: "http://localhost:8000/personas/",
+  baseURL: "/personas/",
   headers: {
     Authorization: `Bearer ${getTokenFromLocalStorage()}`
   }

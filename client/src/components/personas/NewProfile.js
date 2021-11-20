@@ -37,7 +37,7 @@ const NewProfile = () => {
     const axios = require("axios");
     let config = {
       method: "get",
-      url: `http://localhost:8000/accounts/${id}/`,
+      url: `/accounts/${id}/`,
       headers: {}
     };
 
@@ -60,7 +60,7 @@ const NewProfile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/personas/", formData);
+      await axios.post("/personas/", formData);
       console.log(formData);
       navigate("/personas/myprofile/:user");
     } catch (err) {

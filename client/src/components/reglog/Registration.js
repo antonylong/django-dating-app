@@ -26,10 +26,7 @@ const Registration = () => {
     e.preventDefault();
 
     try {
-      await axios.post(
-        "http://localhost:8000/accounts/register/",
-        state.formData
-      );
+      await axios.post("/accounts/register/", state.formData);
       console.log(state);
       navigate("/login");
     } catch (err) {

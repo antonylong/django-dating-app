@@ -28,10 +28,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axios.post(
-        "http://localhost:8000/accounts/login/",
-        state.formData
-      );
+      const { data } = await axios.post("/accounts/login/", state.formData);
       console.log("data", data);
       console.log(state.formData);
       setTokenToLocalStorage(data.token);
