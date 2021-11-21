@@ -22,7 +22,7 @@ const MyProfile = () => {
   };
 
   const handleDelete = async () => {
-    // perhaps put an alert [Are you sure you want to delete your account? And then 'If yes, Delete User + Logout + Push to Welcome Page]
+    // potentially adding an alert to notify users that this will delete the whole user account as well as the profile account.
     try {
       await deleteTheUser(user);
       navigate("/register");
@@ -41,36 +41,95 @@ const MyProfile = () => {
 
   return (
     <>
-      {" "}
-      <div>
-        {" "}
-        <figure>
-          <img src={persona.profile.profile_pic} alt="the user profile" />{" "}
-        </figure>{" "}
-      </div>
-      <h1>{persona.profile.name}</h1>
-      <h2>{persona.profile.age} years old</h2>
-      <h3>City: {persona.profile.city}</h3>
-      <h3>I work as a: {persona.profile.occupation}</h3>
-      <p>Bio: {persona.profile.bio}</p>
-      <p>
-        I identify as {persona.profile.gender} and {persona.profile.sexuality}
-      </p>
-      <p>I am {persona.profile.height} cm</p>
-      {isOwner && (
-        <button
-          className="btn btn-outline-success mb-3"
-          onClick={() => navigate("/personas/myprofile/:user/edit")}
-        >
-          Edit
-        </button>
-      )}{" "}
-      {isOwner && (
-        <button className="btn btn-outline-success mb-3" onClick={handleDelete}>
-          Delete Profile
-        </button>
-      )}{" "}
-      <h3>Comments</h3>
+      <section className="section">
+        <div className="container py-5 h-500">
+          <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col col-lg-6 mb-4 mb-lg-0">
+              <div className="card mb-3">
+                <div className="row g-0">
+                  <div className="col-md-4 gradient-custom text-center text-black">
+                    <img
+                      src={persona.profile.profile_pic}
+                      alt="profile of person"
+                      className="img-fluid my-5"
+                      width="80"
+                      height="400"
+                    />
+                    <h5>{persona.profile.name}</h5>
+                    <p>{persona.profile.bio}</p>
+                    <i className="far fa-edit mb-5"></i>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="card-body p-4">
+                      <h6>Stats</h6>
+                      <hr className="mt-0 mb-4" />
+                      <div className="row pt-1">
+                        <div className="col-6 mb-3">
+                          <h6>Age</h6>
+                          <p className="text-muted">{persona.profile.age}</p>
+                        </div>
+                        <div className="col-6 mb-3">
+                          <h6>Height</h6>
+                          <p className="text-muted">
+                            {persona.profile.height}cm
+                          </p>
+                        </div>
+                      </div>
+                      <h6>About Me</h6>
+                      <hr className="mt-0 mb-4" />
+                      <div className="row pt-1">
+                        <div className="col-6 mb-3">
+                          <h6>Gender</h6>
+                          <p className="text-muted">{persona.profile.gender}</p>
+                        </div>
+                        <div className="col-6 mb-3">
+                          <h6>Sexuality</h6>
+                          <p className="text-muted">
+                            {persona.profile.sexuality}
+                          </p>
+                        </div>
+                        <h6>More</h6>
+                        <hr className="mt-0 mb-4" />
+                        <div className="row pt-1">
+                          <div className="col-6 mb-3">
+                            <h6>Bio</h6>
+                            <p className="text-muted">{persona.profile.bio}</p>
+                          </div>
+                          <div className="col-6 mb-3">
+                            <h6>Occupation</h6>
+                            <p className="text-muted">
+                              {persona.profile.occupation}
+                            </p>
+                          </div>
+                          {isOwner && (
+                            <button
+                              className="btn btn-outline-success mb-3"
+                              onClick={() =>
+                                navigate("/personas/myprofile/:user/edit")
+                              }
+                            >
+                              Edit
+                            </button>
+                          )}{" "}
+                          {isOwner && (
+                            <button
+                              className="btn btn-outline-success mb-3"
+                              onClick={handleDelete}
+                            >
+                              Delete Profile
+                            </button>
+                          )}{" "}
+                          <h3>Comments</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 };

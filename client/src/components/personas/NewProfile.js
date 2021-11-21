@@ -12,8 +12,8 @@ const NewProfile = () => {
     user: {
       id: "",
       email: "",
-      username: ""
-    }
+      username: "",
+    },
   });
 
   const [formData, setFormData] = useState({
@@ -26,7 +26,7 @@ const NewProfile = () => {
     sexuality: "",
     occupation: "",
     bio: "",
-    profile_pic: ""
+    profile_pic: "",
   });
 
   // check and get of user id from token
@@ -38,7 +38,7 @@ const NewProfile = () => {
     let config = {
       method: "get",
       url: `/accounts/${id}/`,
-      headers: {}
+      headers: {},
     };
 
     await axios(config)
@@ -54,7 +54,6 @@ const NewProfile = () => {
 
   useEffect(() => {
     getTheUser();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = async (e) => {
@@ -71,7 +70,7 @@ const NewProfile = () => {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 

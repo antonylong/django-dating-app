@@ -28,42 +28,64 @@ const ProfileList = () => {
   const goSearch = (e) => {
     navigate({
       pathname: "/search/",
-      search: "?search=" + data.search
+      search: "?search=" + data.search,
     });
     window.location.reload();
   };
 
   return (
     <>
-      <div className="search-bar">
-        <SearchBar
-          value={data.search}
-          onChange={(newValue) => setData({ search: newValue })}
-          onRequestSearch={() => goSearch(data.search)}
-          style={{
-            maxWidth: 500
-          }}
-        />
-        <div id="passwordHelpBlock" className="form-text">
-          Refine your matches! Search by age, gender, sexuality, city or
-          occupation.
+      <div className="container center col-sm-4">
+        <div className="search-bar text-center">
+          <SearchBar
+            value={data.search}
+            onChange={(newValue) => setData({ search: newValue })}
+            onRequestSearch={() => goSearch(data.search)}
+            style={{
+              maxWidth: 500,
+            }}
+          />
+          <div id="passwordHelpBlock" className="form-text">
+            Refine your matches! Search by age, gender, sexuality, city or
+            occupation.
+          </div>
         </div>
       </div>
-      <section>
-        {profiles.profile.map((profile) => (
-          <>
-            <h1 key={profile.id}>{profile.name}</h1>
-            <h2>{profile.age}</h2>
-            <img src={profile.profile_pic} alt="profile" />
-            <button
-              className="btn btn-outline-success mb-3"
-              onClick={() => navigate(`/personas/${profile.id}/`)}
-            >
-              See More
-            </button>
-          </>
-        ))}
-      </section>
+      <div className="container">
+        <div className="row">
+          {profiles.profile.map((profile) => (
+            <>
+              <div
+                className="card col-sm-4 mt-3 border-secondary text-center"
+                width="250"
+                height="250"
+                margin="auto"
+                padding="5"
+              >
+                <img
+                  className="card-img-top"
+                  src={profile.profile_pic}
+                  alt="profile of the user"
+                  width="50"
+                  height="400"
+                />
+                <div className="card-body">
+                  <h3 className="card-title" key={profile.id}>
+                    {profile.name}
+                  </h3>
+                  <h4 className="card-text">{profile.age}</h4>
+                  <button
+                    className="btn btn-outline-success mb-3"
+                    onClick={() => navigate(`/personas/${profile.id}/`)}
+                  >
+                    See More
+                  </button>
+                </div>
+              </div>
+            </>
+          ))}
+        </div>
+      </div>
     </>
   );
 };
