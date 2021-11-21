@@ -105,7 +105,7 @@ const MyProfile = () => {
                             <button
                               className="btn btn-outline-success mb-3"
                               onClick={() =>
-                                navigate("/personas/myprofile/:user/edit")
+                                navigate(`/personas/myprofile/${user}/edit`)
                               }
                             >
                               Edit

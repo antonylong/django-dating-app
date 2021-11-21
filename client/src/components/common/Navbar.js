@@ -1,18 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useParams } from "react-router";
 import logo from "../../styles/assets/whitelogo.png";
-import { removeToken, isLoggedIn } from "../../api/authToken";
+import { removeToken, isLoggedIn, getPayload } from "../../api/authToken";
+import { getMyProfile } from "../../api/profileUserApi";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { user } = useParams();
+
+  const user = getPayload().sub;
 
   const handleClick = () => {
     removeToken();
     navigate("/");
     window.location.reload();
   };
+
+  const [persona, setPersona] = useState({ profile: "" });
+
+  const getMyProfileApi = async () => {
+    try {
+      const res = await getMyProfile(user);
+      setPersona({ profile: res.data });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    console.log("is this useeffect?");
+    getMyProfileApi();
+  }, []);
+
+  console.log("this is persona profile", persona.profile.name);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
@@ -47,7 +66,7 @@ const Navbar = () => {
             {isLoggedIn() ? (
               <>
                 <Link to="#" className="nav-link">
-                  Welcome
+                  Welcome {persona.profile.name}
                 </Link>
                 <Link to="/all" className="nav-link">
                   Profiles
