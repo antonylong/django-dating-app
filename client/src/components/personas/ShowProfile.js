@@ -68,6 +68,21 @@ const ShowProfile = () => {
                             {persona.profile.sexuality}
                           </p>
                         </div>
+                        <h6>More</h6>
+                        <hr className="mt-0 mb-4" />
+                        <div className="row pt-1">
+                          <div className="col-6 mb-3">
+                            <h6>Bio</h6>
+                            <p className="text-muted">{persona.profile.bio}</p>
+                          </div>
+                          <div className="col-6 mb-3">
+                            <h6>Occupation</h6>
+                            <p className="text-muted">
+                              {persona.profile.occupation}
+                            </p>
+                          </div>
+                          <h3>Comments</h3>
+                        </div>
                       </div>
                     </div>
                   </div>
