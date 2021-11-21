@@ -6,12 +6,13 @@ import { useParams } from "react-router";
 // import { getPayload } from "../../api/authToken";
 import logo from "../../styles/assets/whitelogo.png";
 import { removeToken } from "../../api/authToken";
+import { isLoggedIn } from "../../api/authToken";
 
 // import { getSingleUser } from "../../api/userApi";
 
 const Navbar = () => {
-  // const { id } = useParams();
   const navigate = useNavigate();
+  // const { id } = useParams();
   const { id, user } = useParams();
   // const [account, setAccount] = useState({ account: null });
 
@@ -40,6 +41,7 @@ const Navbar = () => {
   const handleClick = () => {
     removeToken();
     navigate("/");
+    window.location.reload();
   };
 
   return (
@@ -48,10 +50,10 @@ const Navbar = () => {
         <span className="navbar-brand mb-0 h1">
           <img
             src={logo}
-            alt=""
+            alt="ani-mate logo"
             width="40"
             height="35"
-            className="d-inline-block align-text-top"
+            className="d-inline-block align-text-top logo-img"
           />
           Ani-mate
         </span>
@@ -71,21 +73,30 @@ const Navbar = () => {
             <Link to="/" className="nav-link">
               Home
             </Link>
-            <Link to="/all" className="nav-link">
-              Profiles
-            </Link>
-            <Link to={`/personas/myprofile/${user}`} className="nav-link">
-              My Profile
-            </Link>
-            <Link to="/register" className="nav-link">
-              Register
-            </Link>
-            <Link to="/login" className="nav-link">
-              Login
-            </Link>
-            <button className="nav-link" onClick={handleClick}>
-              Logout
-            </button>
+
+            {isLoggedIn() ? (
+              <>
+                <Link to="/all" className="nav-link">
+                  Profiles
+                </Link>
+                <Link to={`/personas/myprofile/${user}`} className="nav-link">
+                  My Profile
+                </Link>
+
+                <button className="nav-link logout-btn" onClick={handleClick}>
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to="/register" className="nav-link">
+                  Register
+                </Link>
+                <Link to="/login" className="nav-link">
+                  Login
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>

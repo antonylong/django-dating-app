@@ -217,11 +217,11 @@ const NewProfile = () => {
                 handlePicChange={handlePicChange}
               />
               <br />
-              <div className="col-auto">
+              <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button
                   type="submit"
                   onClick={handleSubmit}
-                  className="btn btn-primary mb-3"
+                  className="btn btn-outline-success mb-3"
                 >
                   Create New Profile
                 </button>

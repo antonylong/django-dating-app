@@ -88,7 +88,14 @@ const Registration = () => {
               </div>
             </div>
             <br />
-            <button onClick={handleSubmit}>Register</button>
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button
+                className="btn btn-outline-success mb-3"
+                onClick={handleSubmit}
+              >
+                Register
+              </button>
+            </div>
           </form>
         </div>
         <div className="col-lg-3"></div>
