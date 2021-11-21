@@ -17,7 +17,7 @@ const ImageUploadField = ({ handlePicChange, value }) => {
     <div>
       {value ? (
         <div>
-          <img src={value} alt="profile" />
+          <img className="image-view" src={value} alt="profile" />
         </div>
       ) : (
         <div className="mb-3">

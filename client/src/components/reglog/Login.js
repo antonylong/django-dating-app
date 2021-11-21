@@ -33,6 +33,7 @@ const Login = () => {
       console.log(state.formData);
       setTokenToLocalStorage(data.token);
       navigate("/newprofile");
+      window.location.reload();
     } catch (err) {
       console.error("Error logging in user", err);
     }
@@ -64,7 +65,14 @@ const Login = () => {
               onChange={handleChange}
             ></input>
             <br />
-            <button onClick={handleSubmit}>Login</button>
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button
+                className="btn btn-outline-success mb-3"
+                onClick={handleSubmit}
+              >
+                Login
+              </button>
+            </div>
           </form>
         </div>
         <div className="col-lg-3"></div>

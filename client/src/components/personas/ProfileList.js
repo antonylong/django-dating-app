@@ -35,18 +35,30 @@ const ProfileList = () => {
 
   return (
     <>
-      <SearchBar
-        value={data.search}
-        onChange={(newValue) => setData({ search: newValue })}
-        onRequestSearch={() => goSearch(data.search)}
-      />
+      <div className="search-bar">
+        <SearchBar
+          value={data.search}
+          onChange={(newValue) => setData({ search: newValue })}
+          onRequestSearch={() => goSearch(data.search)}
+          style={{
+            maxWidth: 500
+          }}
+        />
+        <div id="passwordHelpBlock" className="form-text">
+          Refine your matches! Search by age, gender, sexuality, city or
+          occupation.
+        </div>
+      </div>
       <section>
         {profiles.profile.map((profile) => (
           <>
             <h1 key={profile.id}>{profile.name}</h1>
             <h2>{profile.age}</h2>
             <img src={profile.profile_pic} alt="profile" />
-            <button onClick={() => navigate(`/personas/${profile.id}/`)}>
+            <button
+              className="btn btn-outline-success mb-3"
+              onClick={() => navigate(`/personas/${profile.id}/`)}
+            >
               See More
             </button>
           </>

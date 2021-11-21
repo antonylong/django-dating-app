@@ -56,13 +56,20 @@ const MyProfile = () => {
       <p>
         I identify as {persona.profile.gender} and {persona.profile.sexuality}
       </p>
-      <p>I am {persona.profile.height}</p>
+      <p>I am {persona.profile.height} cm</p>
       {isOwner && (
-        <button onClick={() => navigate("/personas/myprofile/:user/edit")}>
+        <button
+          className="btn btn-outline-success mb-3"
+          onClick={() => navigate("/personas/myprofile/:user/edit")}
+        >
           Edit
         </button>
       )}{" "}
-      {isOwner && <button onClick={handleDelete}>Delete Profile</button>}{" "}
+      {isOwner && (
+        <button className="btn btn-outline-success mb-3" onClick={handleDelete}>
+          Delete Profile
+        </button>
+      )}{" "}
       <h3>Comments</h3>
     </>
   );
