@@ -16,9 +16,7 @@ const ShowProfile = () => {
   };
 
   useEffect(() => {
-    console.log("are we having a useEffet");
     getOneProfile();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

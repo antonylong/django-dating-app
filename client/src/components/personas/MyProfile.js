@@ -22,7 +22,7 @@ const MyProfile = () => {
   };
 
   const handleDelete = async () => {
-    // perhaps put an alert [Are you sure you want to delete your account? And then 'If yes, Delete User + Logout + Push to Welcome Page]
+    // potentially adding an alert to notify users that this will delete the whole user account as well as the profile account.
     try {
       await deleteTheUser(user);
       navigate("/register");
