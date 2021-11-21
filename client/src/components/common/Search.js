@@ -6,7 +6,7 @@ const Search = () => {
   const search = "search";
   const navigate = useNavigate();
   const [searchState, setSearchState] = useState({
-    profiles: []
+    profiles: [],
   });
 
   const getSearchesFromApi = async () => {
@@ -37,16 +37,33 @@ const Search = () => {
       <section>
         {searchState.profiles.map((profile) => (
           <>
-            <h1 key={profile.id}>{profile.name}</h1>
-            <h2>{profile.age}</h2>
-            <img src={profile.profile_pic} alt="profile" />
-
-            <button
-              className="btn btn-outline-success mb-3"
-              onClick={() => navigate(`/personas/${profile.id}/`)}
+            <div
+              className="card col-sm-4 mt-3 border-secondary text-center"
+              width="250"
+              height="250"
+              margin="auto"
+              padding="5"
             >
-              See More
-            </button>
+              <img
+                className="card-img-top"
+                src={profile.profile_pic}
+                alt="profile of the user"
+                width="50"
+                height="400"
+              />
+              <div className="card-body">
+                <h3 className="card-title" key={profile.id}>
+                  {profile.name}
+                </h3>
+                <h4 className="card-text">{profile.age}</h4>
+                <button
+                  className="btn btn-outline-success mb-3"
+                  onClick={() => navigate(`/personas/${profile.id}/`)}
+                >
+                  See More
+                </button>
+              </div>
+            </div>
           </>
         ))}
       </section>
