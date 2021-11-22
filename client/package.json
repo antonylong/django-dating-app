@@ -20,6 +20,7 @@
     "react-router-dom": "^6.0.1",
     "react-scripts": "4.0.3",
     "sass": "^1.43.4",
+    "sweetalert": "^2.1.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

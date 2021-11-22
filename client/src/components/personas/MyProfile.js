@@ -3,6 +3,7 @@ import { getMyProfile } from "../../api/profileUserApi";
 import { getPayload } from "../../api/authToken";
 import { useNavigate } from "react-router";
 import { deleteTheUser } from "../../api/userApi";
+import swal from "sweetalert";
 
 const MyProfile = () => {
   const navigate = useNavigate();
@@ -21,14 +22,33 @@ const MyProfile = () => {
     }
   };
 
-  const handleDelete = async () => {
-    // potentially adding an alert to notify users that this will delete the whole user account as well as the profile account.
-    try {
-      await deleteTheUser(user);
-      navigate("/register");
-    } catch (error) {
-      console.error("failed deleting the user", error);
-    }
+  // const handleDelete = async () => {
+  //   // potentially adding an alert to notify users that this will delete the whole user account as well as the profile account.
+  //   try {
+  //     await deleteTheUser(user);
+  //     navigate("/register");
+  //   } catch (error) {
+  //     console.error("failed deleting the user", error);
+  //   }
+  // };
+
+  const handleDelete = () => {
+    swal({
+      title: "Are you sure?",
+      text: "This will delete your user account as well.",
+      icon: "warning",
+      dangerMode: true,
+    }).then(async (willDelete) => {
+      if (willDelete) {
+        swal("Deleted!", "Thanks for taking part!", "success");
+        try {
+          await deleteTheUser(user);
+          navigate("/register");
+        } catch (error) {
+          console.error("failed deleting the user", error);
+        }
+      }
+    });
   };
 
   useEffect(() => {
@@ -119,7 +139,6 @@ const MyProfile = () => {
                               Delete Profile
                             </button>
                           )}{" "}
-                          <h3>Comments</h3>
                         </div>
                       </div>
                     </div>
