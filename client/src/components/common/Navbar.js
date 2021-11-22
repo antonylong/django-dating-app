@@ -75,7 +75,11 @@ const Navbar = () => {
                   My Profile
                 </Link>
 
-                <button className="nav-link logout-btn" onClick={handleClick}>
+                <button
+                  data-testid="logout"
+                  className="nav-link logout-btn"
+                  onClick={handleClick}
+                >
                   Logout
                 </button>
               </>
