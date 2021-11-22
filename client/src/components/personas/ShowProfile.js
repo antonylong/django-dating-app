@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { getSingleProfile } from "../../api/profileApi";
+import swal from "sweetalert";
 
 const ShowProfile = () => {
   const { id } = useParams();
@@ -18,6 +19,15 @@ const ShowProfile = () => {
   useEffect(() => {
     getOneProfile();
   }, []);
+
+  const handleAlert = () => {
+    swal({
+      title: "すごい!!",
+      text: `We've notified ${persona.profile.name}!`,
+      icon: "success",
+      success: true,
+    });
+  };
 
   return (
     <>
@@ -81,7 +91,12 @@ const ShowProfile = () => {
                               {persona.profile.occupation}
                             </p>
                           </div>
-                          <h3>Comments</h3>
+                          <button
+                            className="btn btn-outline-success mb-3"
+                            onClick={handleAlert}
+                          >
+                            Wink
+                          </button>
                         </div>
                       </div>
                     </div>
