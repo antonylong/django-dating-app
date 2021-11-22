@@ -33,12 +33,11 @@ const EditProfile = () => {
     user: {
       id: "",
       email: "",
-      username: ""
-    }
+      username: "",
+    },
   });
 
   const [formData, setFormData] = useState({
-    // should all the formdata be null like in cheeseboard?
     user: "",
     name: "",
     age: "",
@@ -48,7 +47,7 @@ const EditProfile = () => {
     sexuality: "",
     occupation: "",
     bio: "",
-    profile_pic: ""
+    profile_pic: "",
   });
 
   // check and get of user id from token
@@ -61,7 +60,7 @@ const EditProfile = () => {
     let config = {
       method: "get",
       url: `http://localhost:8000/accounts/${id}/`,
-      headers: {}
+      headers: {},
     };
 
     await axios(config)
@@ -77,14 +76,13 @@ const EditProfile = () => {
 
   useEffect(() => {
     getTheUser();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const personaId = persona.profile.id;
 
   const editProfileApi = (personaID, formData) => {
     const requestConfig = {
-      headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` }
+      headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
     };
 
     console.log("this is personaID in getProfileAPI", personaID);
@@ -111,7 +109,7 @@ const EditProfile = () => {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
