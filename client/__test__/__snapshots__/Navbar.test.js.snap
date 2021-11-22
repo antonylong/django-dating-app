@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar /> matches the snapshot 1`] = `
+<body>
+  <div>
+    <nav
+      class="navbar navbar-expand-lg navbar-light"
+    >
+      <div
+        class="container-fluid"
+      >
+        <span
+          class="navbar-brand mb-0 h1"
+        >
+          <img
+            alt="ani-mate logo"
+            class="d-inline-block align-text-top logo-img"
+            height="35"
+            src=""
+            width="40"
+          />
+          Ani-mate
+        </span>
+        <button
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          class="navbar-toggler navbar-dark"
+          data-bs-target="#navbarNavAltMarkup"
+          data-bs-toggle="collapse"
+          type="button"
+        >
+          <span
+            class="navbar-toggler-icon navbar-dark"
+          />
+        </button>
+        <div
+          class="collapse navbar-collapse"
+          id="navbarNavAltMarkup"
+        >
+          <div
+            class="navbar-nav ms-auto"
+          >
+            <a
+              class="nav-link"
+              href="/"
+            >
+              Home
+            </a>
+            <a
+              class="nav-link"
+              href="/register"
+            >
+              Register
+            </a>
+            <a
+              class="nav-link"
+              href="/login"
+            >
+              Login
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</body>
+`;
