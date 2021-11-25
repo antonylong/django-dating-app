@@ -2,6 +2,9 @@
 
 A dating app for those that live in the anime world.
 
+## Deployed App:
+- https://ani-mate-django.herokuapp.com/
+
 ## Table of contents
 
 - [General info](#general-info)
